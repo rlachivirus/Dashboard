@@ -34,21 +34,41 @@ function TodoForm(props) {
 }
 
 function TodoList(props) {
+
+  const sendToDone = (idx) => {
+    props.done(idx);
+  }
+
   return (
     <div>
+      <label>To dos</label>
       <ul>
         {props.lists.map((list, idx) => {
-            return <li key={`todo-${idx}`}>{list}</li>
+
+            return (
+              <li key={`todo-${idx}`}>{list}
+              <button onClick={(idx) => sendToDone(idx)}>Done</button>
+                {/* <button>-</button>
+                <span>5</span>
+                <button>+</button> */}
+              </li>
+            )
           })}
       </ul>
     </div>
   )
 }
 
-function TodoDone() {
+function TodoDone(props) {
   return (
     <div>
+      <label>Done</label>
+      <ul>
+        {props.done.map((list, idx) => {
 
+          return <li key={`todo-${idx}`}>{list}</li>
+        })}
+      </ul>
     </div>
   )
 }
@@ -63,8 +83,16 @@ function Calculator() {
 
 function App() {
   const todoLists = [];
+  const doneLists = []
 
   const [ lists, setLists ] = useState(todoLists);
+  const [ done, setDone ] = useState(doneLists);
+
+  const todoDone = (idx) => {
+    let newList = lists.splice(idx, 1)
+    setLists([...lists]);
+    setDone([...done, newList]);
+  }
 
   const addTodo = (todo) => {
     setLists([...lists, todo]);
@@ -74,8 +102,8 @@ function App() {
     <div>
       <Weather />
       <TodoForm addTodo={addTodo}/>
-      <TodoList lists={lists}/>
-      <TodoDone />
+      <TodoList lists={lists} done={todoDone}/>
+      <TodoDone done={done}/>
       <Calculator />
     </div>
   );
