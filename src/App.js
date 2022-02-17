@@ -3,7 +3,7 @@ import './App.css';
 
 function Weather() {
   return (
-    <div>
+    <div className='weather'>
       SHOW WEATHER
     </div>
   )
@@ -24,8 +24,8 @@ function TodoForm(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Things to do</label>
+    <form className='input-form' onSubmit={handleSubmit}>
+      <label>Add things to do</label>
       <br/>
       <input type='text' value={todo} onChange={handleChange}/>
       <input type='submit' value='Add'/>
@@ -36,47 +36,47 @@ function TodoForm(props) {
 function TodoList(props) {
 
   const sendToDone = (idx) => {
+
     props.done(idx);
   }
 
   return (
-    <div>
-      <label>To dos</label>
-      <ul>
-        {props.lists.map((list, idx) => {
+    <label>To dos
+      <div className='todos'>
+        <ul className='todo-lists'>
+          {props.lists.map((list, idx) => {
 
-            return (
-              <li key={`todo-${idx}`}>{list}
-              <button onClick={(idx) => sendToDone(idx)}>Done</button>
-                {/* <button>-</button>
-                <span>5</span>
-                <button>+</button> */}
-              </li>
-            )
-          })}
-      </ul>
-    </div>
+              return (
+                <span key={`todo-${idx}`}>{list}
+                  <button onClick={() => sendToDone(idx)}>></button>
+                </span>
+              )
+            })}
+        </ul>
+      </div>
+    </label >
   )
 }
 
 function TodoDone(props) {
   return (
-    <div>
-      <label>Done</label>
-      <ul>
-        {props.done.map((list, idx) => {
+    <label>Done
+      <div className='done'>
+        <ul className='done-lists'>
+          {props.done.map((list, idx) => {
 
-          return <li key={`todo-${idx}`}>{list}</li>
-        })}
-      </ul>
-    </div>
+            return <span key={`todo-${idx}`}>{list}</span>
+          })}
+        </ul>
+      </div>
+    </label>
   )
 }
 
 function Calculator() {
   return (
-    <div>
-
+    <div className='calculator'>
+      CALCULATOR
     </div>
   )
 }
@@ -99,12 +99,16 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='entire-structure'>
       <Weather />
-      <TodoForm addTodo={addTodo}/>
-      <TodoList lists={lists} done={todoDone}/>
-      <TodoDone done={done}/>
-      <Calculator />
+      <div className='todo-structure'>
+        <div>
+          <TodoForm addTodo={addTodo}/>
+          <Calculator />
+        </div>
+        <TodoList lists={lists} done={todoDone}/>
+        <TodoDone done={done}/>
+      </div>
     </div>
   );
 }

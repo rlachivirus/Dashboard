@@ -36,3 +36,80 @@
     transform: rotate(360deg);
   }
 } */
+
+.entire-structure {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 25%;
+  left: 25%;
+}
+
+.todo-structure {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.weather {
+  border: 2px solid black;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.calculator {
+  border: 2px solid black;
+  margin-top: 20px;
+  width: 250px;
+  height: 300px;
+}
+
+.input-form {
+  border: 2px solid black;
+  padding: 10px;
+}
+
+.todos {
+  border: 2px solid black;
+  width: 200px;
+  margin-left: 20px;
+  overflow: scroll;
+  height: 366px;
+}
+
+.done {
+  border: 2px solid black;
+  width: 200px;
+  margin-left: 20px;
+  overflow: scroll;
+  height: 366px;
+}
+.todo-lists {
+  display: flex;
+  flex-direction: column;
+}
+
+span {
+  position: relative;
+  border: 2px solid black;
+  height: 100px;
+  width: 165px;
+  left: -30px;
+  margin-bottom: 5px;
+  overflow: auto;
+  word-break: break-word;
+  padding: 5px;
+}
+
+button {
+  float: right;
+  width: 25px;
+  left: 100px;
+  top: 70px;
+}
+
+.done-lists {
+  display: flex;
+  flex-direction: column;
+}
