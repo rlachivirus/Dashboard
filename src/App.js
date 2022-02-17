@@ -47,7 +47,7 @@ function TodoList(props) {
           {props.lists.map((list, idx) => {
 
               return (
-                <span key={`todo-${idx}`}>{list}
+                <span className='todo-memo' key={`todo-${idx}`}>{list}
                   <button onClick={() => sendToDone(idx)}>></button>
                 </span>
               )
@@ -65,7 +65,7 @@ function TodoDone(props) {
         <ul className='done-lists'>
           {props.done.map((list, idx) => {
 
-            return <span key={`todo-${idx}`}>{list}</span>
+            return <span className='done-memo' key={`todo-${idx}`}>{list}</span>
           })}
         </ul>
       </div>
@@ -78,6 +78,38 @@ function Calculator() {
     <div className='calculator'>
       CALCULATOR
     </div>
+  )
+}
+
+function HelloWorld() {
+  const initialFont = 'WORLD'
+
+  const [ font, setFont ] = useState(initialFont);
+
+  useEffect(() => {
+    const changeWord = setInterval(() => {
+      let word = document.getElementById('helloWorld');
+      // console.log(word.style.fontFamily)
+      if (word.style.fontFamily === 'times new roman') {
+        word.style.fontFamily = 'comicsansms'
+        setFont(word.innerText);
+      } else if (word.style.fontFamily === 'comicsansms') {
+        word.style.fontFamily = 'helvetica'
+        setFont(word.innerText);
+      } else if (word.style.fontFamily === 'helvetica') {
+        word.style.fontFamily = 'times new roman'
+        setFont(word.innerText);
+      } else if (!(word.style.fontFamily === 'default')) {
+        word.style.fontFamily = 'comicsansms'
+        setFont(word.innerText);
+      }
+    }, 1000)
+
+    return () => clearInterval(changeWord);
+  })
+
+  return (
+    <p>HELLO <span id='helloWorld'>{font}</span></p>
   )
 }
 
@@ -100,6 +132,7 @@ function App() {
 
   return (
     <div className='entire-structure'>
+      <HelloWorld />
       <Weather />
       <div className='todo-structure'>
         <div>
