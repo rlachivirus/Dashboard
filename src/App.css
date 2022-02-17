@@ -129,13 +129,12 @@ button {
 
 p {
   position: absolute;
-  /* border: 2px solid black; */
-  width: 150px;
+  width: 200px;
   height: 50px;
   top: -15%;
+  font-size: 23px;
 }
 
 span {
-  position: relative;
   font-size: 20px;
 }

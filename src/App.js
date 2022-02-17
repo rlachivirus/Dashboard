@@ -109,7 +109,7 @@ function HelloWorld() {
   })
 
   return (
-    <p>HELLO <span id='helloWorld'>{font}</span></p>
+    <p>Hello <span id='helloWorld'>{font}</span></p>
   )
 }
 
