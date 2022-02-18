@@ -42,6 +42,7 @@ function TodoList(props) {
 
   return (
     <label>To dos
+      <hr />
       <div className='todos'>
         <ul className='todo-lists'>
           {props.lists.map((list, idx) => {
@@ -62,6 +63,7 @@ function TodoList(props) {
 function TodoDone(props) {
   return (
     <label>Done
+      <hr />
       <div className='done'>
         <ul className='done-lists'>
           {props.done.map((list, idx) => {
