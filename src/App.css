@@ -57,24 +57,28 @@
   border: 2px solid black;
   height: 50px;
   margin-bottom: 20px;
+  margin-right: 10px;
 }
 
 .calculator {
   border: 2px solid black;
   margin-top: 20px;
+  margin-right: 10px;
   width: 250px;
   height: 300px;
 }
 
 .input-form {
   border: 2px solid black;
+  margin-right: 10px;
   padding: 10px;
 }
 
 .todos {
   border: 2px solid black;
   width: 200px;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   overflow: scroll;
   height: 366px;
 }
@@ -82,7 +86,8 @@
 .done {
   border: 2px solid black;
   width: 200px;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   overflow: scroll;
   height: 366px;
 }
@@ -116,10 +121,11 @@
 }
 
 button {
-  float: right;
+  /* float: right; */
+  position: absolute;
   width: 25px;
-  left: 100px;
-  top: 70px;
+  left: 140px;
+  top: 10px;
 }
 
 .done-lists {
@@ -137,4 +143,17 @@ p {
 
 span {
   font-size: 20px;
+}
+
+label {
+  /* border: 2px solid black; */
+  text-align: center;
+}
+
+span p {
+  position: relative;
+  /* border: 2px solid black; */
+  height: 80px;
+  width: 130px;
+  margin: 10px 0 0 0;
 }

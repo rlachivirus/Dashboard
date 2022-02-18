@@ -47,7 +47,8 @@ function TodoList(props) {
           {props.lists.map((list, idx) => {
 
               return (
-                <span className='todo-memo' key={`todo-${idx}`}>{list}
+                <span className='todo-memo' key={`todo-${idx}`}>
+                  <p>{list}</p>
                   <button onClick={() => sendToDone(idx)}>></button>
                 </span>
               )
@@ -82,7 +83,7 @@ function Calculator() {
 }
 
 function HelloWorld() {
-  const initialFont = 'WORLD'
+  const initialFont = 'World'
 
   const [ font, setFont ] = useState(initialFont);
 
