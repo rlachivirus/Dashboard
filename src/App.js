@@ -85,34 +85,34 @@ function Calculator() {
 }
 
 function HelloWorld() {
-  const initialFont = 'World'
+  const initialWord = '';
 
-  const [ font, setFont ] = useState(initialFont);
+  const [ word, setWord ] = useState(initialWord);
 
   useEffect(() => {
-    const changeWord = setInterval(() => {
-      let word = document.getElementById('helloWorld');
-      // console.log(word.style.fontFamily)
-      if (word.style.fontFamily === 'times new roman') {
-        word.style.fontFamily = 'comicsansms'
-        setFont(word.innerText);
-      } else if (word.style.fontFamily === 'comicsansms') {
-        word.style.fontFamily = 'helvetica'
-        setFont(word.innerText);
-      } else if (word.style.fontFamily === 'helvetica') {
-        word.style.fontFamily = 'times new roman'
-        setFont(word.innerText);
-      } else if (!(word.style.fontFamily === 'default')) {
-        word.style.fontFamily = 'comicsansms'
-        setFont(word.innerText);
+    const changeFont = setInterval(() => {
+      let font = document.getElementById('helloWorld');
+      console.log(font.style.fontFamily)
+      if (font.style.fontFamily === 'times') {
+        font.style.fontFamily = 'comicsansms'
+        setWord('World!');
+      } else if (font.style.fontFamily === 'comicsansms') {
+        font.style.fontFamily = 'helvetica'
+        setWord('World!!');
+      } else if (font.style.fontFamily === 'helvetica') {
+        font.style.fontFamily = 'times'
+        setWord('World!!!');
+      } else if (font.style.fontFamily !== 'default') {
+        font.style.fontFamily = 'times'
+        setWord('World');
       }
     }, 1000)
 
-    return () => clearInterval(changeWord);
+    return () => clearInterval(changeFont);
   })
 
   return (
-    <p>Hello <span id='helloWorld'>{font}</span></p>
+    <p>Hello <span id='helloWorld'>{word}</span></p>
   )
 }
 
