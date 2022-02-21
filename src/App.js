@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-const axios = require('axios');
+import axios from 'axios'
 
 function Weather() {
+  const [ weather, setWeather ] = useState(null);
 
-  const response = axios.get('http://api.weatherapi.com/v1/forecast.json?key=3d83602b387a49c39ba33428222102&q=New York&days=7&aqi=no&alerts=no');
-  console.log(response)
+  useEffect(() => {
+    axios.get('http://api.weatherapi.com/v1/forecast.json?key=3d83602b387a49c39ba33428222102&q=New York&days=7&aqi=no&alerts=no')
+      .then((response) => setWeather(response.data))
+  }, []);
 
+  if ((!weather)) return null;
+  console.log(weather)
   return (
     <div className='weather'>
-      SHOW WEATHER
+        {weather.forecast.forecastday.map((weath) => {
+          return (
+          <div className='forecast'>
+            <img src={weath.day.condition.icon} />
+            <p>{weath.day.mintemp_f / weath.day.maxtemp_f}</p>
+          </div>
+          )
+        })}
     </div>
   )
 }
