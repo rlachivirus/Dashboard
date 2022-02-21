@@ -55,9 +55,32 @@
 .weather {
   float: none;
   border: 2px solid black;
-  height: 50px;
+  height: 105px;
   margin-bottom: 20px;
   margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.forecast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.forecast-date {
+  font-size: 15px;
+}
+
+.forecast-img {
+  width: 70px;
+  height: auto;
+}
+
+.forecast-temp {
+  font-size: 15px;
 }
 
 .calculator {

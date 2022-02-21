@@ -14,14 +14,17 @@ function Weather() {
   console.log(weather)
   return (
     <div className='weather'>
+      {/* <div className='forecast'> */}
         {weather.forecast.forecastday.map((weath) => {
           return (
-          <div className='forecast'>
-            <img src={weath.day.condition.icon} />
-            <p>{weath.day.mintemp_f / weath.day.maxtemp_f}</p>
-          </div>
-          )
-        })}
+            <div className='forecast'>
+              <span className='forecast-date'>{weath.date}</span>
+              <img className='forecast-img' src={weath.day.condition.icon} />
+              <span className='forecast-temp'>{`${weath.day.mintemp_f} / ${weath.day.maxtemp_f}`}</span>
+            </div>
+            )
+          })}
+          {/* </div> */}
     </div>
   )
 }
