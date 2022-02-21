@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+const axios = require('axios');
 
 function Weather() {
+
+  const response = axios.get('http://api.weatherapi.com/v1/forecast.json?key=3d83602b387a49c39ba33428222102&q=New York&days=7&aqi=no&alerts=no');
+  console.log(response)
+
   return (
     <div className='weather'>
       SHOW WEATHER
@@ -92,7 +97,7 @@ function HelloWorld() {
   useEffect(() => {
     const changeFont = setInterval(() => {
       let font = document.getElementById('helloWorld');
-      console.log(font.style.fontFamily)
+      // console.log(font.style.fontFamily)
       if (font.style.fontFamily === 'times') {
         font.style.fontFamily = 'comicsansms'
         setWord('World!');
