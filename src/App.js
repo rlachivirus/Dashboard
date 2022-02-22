@@ -11,7 +11,7 @@ function Weather() {
   }, []);
 
   if ((!weather)) return null;
-  // console.log(weather)
+  console.log(weather)
   return (
     <div className='weather'>
       {/* <div className='forecast'> */}
@@ -20,7 +20,7 @@ function Weather() {
             <div key={weath.date} className='forecast'>
               <span className='forecast-date'>{weath.date}</span>
               <img className='forecast-img' src={weath.day.condition.icon} />
-              <span className='forecast-temp'>{`${weath.day.mintemp_f} / ${weath.day.maxtemp_f}`}</span>
+              <span className='forecast-temp'>{`${weath.day.mintemp_f}° / ${weath.day.maxtemp_f}°`}</span>
             </div>
             )
           })}
