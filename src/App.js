@@ -137,7 +137,34 @@ function Calculator() {
   }
 
   const handleSign = (e) => {
-    setSign(e.target.innerText)
+    if (e.target.innerText === 'AC') {
+      if (result) {
+        setResult(null)
+      } else if (secondNum) {
+        setSecondNum('');
+      } else if (firstNum) {
+        setFirstNum('0')
+        setSign('');
+      }
+    } else if (e.target.innerText === '+/-') {
+      if (result) {
+        setResult(prevState => -(prevState));
+      } else if (secondNum) {
+        setSecondNum(prevState => -(prevState));
+      } else if (firstNum) {
+        setFirstNum(prevState => -(prevState));
+      }
+    } else if (e.target.innerText === '%') {
+      if (result) {
+        setResult(prevState => prevState / 100);
+      } else if (secondNum) {
+        setSecondNum(prevState => prevState / 100);
+      } else if (firstNum) {
+        setFirstNum(prevState => prevState / 100);
+      }
+    } else {
+      setSign(e.target.innerText)
+    }
   }
 
   const handleResult = () => {
@@ -153,6 +180,17 @@ function Calculator() {
             setResult('Error')
           } else {
           setResult(Number(firstNum) / Number(secondNum));
+        }
+      } else if (sign === '+/-') {
+
+      } else if (sign === '%') {
+
+      } else {
+        if (secondNum) {
+          setSecondNum('');
+          setSign('');
+        } else if (firstNum) {
+          setFirstNum('0')
         }
       }
     }
