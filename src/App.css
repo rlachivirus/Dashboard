@@ -96,18 +96,20 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  align-items: center;
 }
 
 .calculator-result {
   margin-top: 10px;
   margin-bottom: 10px;
+  align-self: flex-end;
+  margin-right: 20px;
 }
 
 .row {
   display: flex;
   flex-direction: row;
   gap: 15px;
-  margin-left: 14px;
 }
 
 .numbers {

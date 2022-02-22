@@ -11,7 +11,7 @@ function Weather() {
   }, []);
 
   if ((!weather)) return null;
-  console.log(weather)
+  // console.log(weather)
   return (
     <div className='weather'>
       {/* <div className='forecast'> */}
@@ -98,9 +98,19 @@ function TodoDone(props) {
 }
 
 function Calculator() {
+  const [ firstNum, setFirstNum ] = useState('0');
+
+  const handleNumbers = (e) => {
+    if (firstNum === '0') {
+      setFirstNum(e.target.innerText)  
+    } else {
+      setFirstNum(prevState => prevState + e.target.innerText)
+    }
+  }
+  console.log(firstNum)
   return (
     <div className='calculator'>
-      <span className='calculator-result'>RESULT</span>
+      <span className='calculator-result'>{firstNum}</span>
       <div className='row'>
         <span className='icons'>AC</span>
         <span className='icons'>+/-</span>
@@ -108,8 +118,8 @@ function Calculator() {
         <span className='icons'>÷</span>
       </div>
       <div className='row'>
-        <span className='numbers'>7</span>
-        <span className='numbers'>8</span>
+        <span className='numbers' onClick={handleNumbers}>7</span>
+        <span className='numbers' onClick={handleNumbers}>8</span>
         <span className='numbers'>9</span>
         <span className='icons'>×</span>
       </div>
