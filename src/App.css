@@ -95,24 +95,52 @@
   height: 300px;
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
 .calculator-result {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .row {
   display: flex;
   flex-direction: row;
+  gap: 15px;
+  margin-left: 14px;
 }
 
 .numbers {
-  
+  border: 2px solid black;
+  border-radius: 50px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.num-zero {
+  border: 2px solid black;
+  border-radius: 50px;
+  height: 40px;
+  width: 99px;
+  text-align: center;
+  line-height: 1.7;
 }
 
 .icons {
+  border: 2px solid black;
+  border-radius: 50px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 1.2;
+  font-size: 29px;
+}
 
+.icons:nth-child(1), .icons:nth-child(2), .icons:nth-child(3) {
+  font-size: 22px;
+  line-height: 1.7;
 }
 
 .input-form {

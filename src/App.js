@@ -126,7 +126,7 @@ function Calculator() {
         <span className='icons'>+</span>
       </div>
       <div className='row'>
-        <span className='numbers'>0</span>
+        <span className='num-zero'>0</span>
         <span className='numbers'>.</span>
         <span className='icons'>=</span>
       </div>
