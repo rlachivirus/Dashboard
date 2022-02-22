@@ -106,6 +106,7 @@ function Calculator() {
   // const numbers = [];
 
   const handleNumbers = (e) => {
+    setResult(null)
     if (sign === '') {
       if (firstNum === '0') {
         if (e.target.innerText === '.' && !firstNum.includes('.')) {
@@ -136,10 +137,30 @@ function Calculator() {
   }
 
   const handleSign = (e) => {
-    console.log(e.target.innerText)
     setSign(e.target.innerText)
   }
 
+  const handleResult = () => {
+    if (firstNum && secondNum && sign) {
+      if (sign === '+') {
+        setResult(Number(firstNum) + Number(secondNum));
+      } else if (sign === '-') {
+        setResult(Number(firstNum) - Number(secondNum));
+      } else if (sign === '×') {
+        setResult(Number(firstNum) * Number(secondNum));
+      } else if (sign === '÷') {
+        if (secondNum === '0') {
+            setResult('Error')
+          } else {
+          setResult(Number(firstNum) / Number(secondNum));
+        }
+      }
+    }
+    setFirstNum('0');
+    setSecondNum('');
+    setSign('');
+  }
+  console.log(Number(firstNum) / Number(secondNum))
   console.log(firstNum)
   console.log(secondNum)
   console.log(sign)
@@ -147,22 +168,22 @@ function Calculator() {
     <div className='calculator'>
       <span className='calculator-result'>{ result ? result : secondNum.length === 0 ? firstNum : secondNum }</span>
       <div className='row'>
-        <span className='icons'>AC</span>
+        <span className='icons' onClick={handleSign}>AC</span>
         <span className='icons' onClick={handleSign}>+/-</span>
-        <span className='icons'>%</span>
-        <span className='icons'>÷</span>
+        <span className='icons' onClick={handleSign}>%</span>
+        <span className='icons' onClick={handleSign}>÷</span>
       </div>
       <div className='row'>
         <span className='numbers' onClick={handleNumbers}>7</span>
         <span className='numbers' onClick={handleNumbers}>8</span>
         <span className='numbers' onClick={handleNumbers}>9</span>
-        <span className='icons'>×</span>
+        <span className='icons' onClick={handleSign}>×</span>
       </div>
       <div className='row'>
         <span className='numbers' onClick={handleNumbers}>4</span>
         <span className='numbers' onClick={handleNumbers}>5</span>
         <span className='numbers' onClick={handleNumbers}>6</span>
-        <span className='icons'>-</span>
+        <span className='icons' onClick={handleSign}>-</span>
       </div>
       <div className='row'>
         <span className='numbers' onClick={handleNumbers}>1</span>
@@ -173,7 +194,7 @@ function Calculator() {
       <div className='row'>
         <span className='num-zero' onClick={handleNumbers}>0</span>
         <span className='numbers' onClick={handleNumbers}>.</span>
-        <span className='icons'>=</span>
+        <span className='icons' onClick={handleResult}>=</span>
       </div>
     </div>
   )
