@@ -55,7 +55,7 @@
 .weather {
   float: none;
   border: 2px solid black;
-  height: 105px;
+  height: 130px;
   margin-bottom: 20px;
   margin-right: 10px;
   display: flex;
@@ -77,6 +77,10 @@
 .forecast-img {
   width: 70px;
   height: auto;
+}
+
+.forecast-text {
+  font-size: 20px;
 }
 
 .forecast-temp {

@@ -20,6 +20,7 @@ function Weather() {
             <div key={weath.date} className='forecast'>
               <span className='forecast-date'>{weath.date}</span>
               <img className='forecast-img' src={weath.day.condition.icon} />
+              <span className='forecast-text'>{weath.day.condition.text}</span>
               <span className='forecast-temp'>{`${weath.day.mintemp_f}° / ${weath.day.maxtemp_f}°`}</span>
             </div>
             )
