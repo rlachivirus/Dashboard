@@ -108,13 +108,30 @@ function Calculator() {
   const handleNumbers = (e) => {
     if (sign === '') {
       if (firstNum === '0') {
-        setFirstNum(e.target.innerText);
+        if (e.target.innerText === '.' && !firstNum.includes('.')) {
+          setFirstNum('0.');
+        } else {
+          setFirstNum(e.target.innerText);
+        }
       } else {
-        setFirstNum(prevState => prevState + e.target.innerText);
+        if (e.target.innerText === '.' && firstNum.includes('.')) {
+        } else {
+          setFirstNum(prevState => prevState + e.target.innerText);
+        }
       }
     } else {
-      // numbers.push(firstNum);
-      setSecondNum(prevState => prevState + e.target.innerText);
+      if (secondNum.length === 0) {
+        if (e.target.innerText === '.' && !secondNum.includes('.')) {
+          setSecondNum('0.');
+        } else {
+          setSecondNum(e.target.innerText);
+        }
+      } else {
+        if (e.target.innerText === '.' && secondNum.includes('.')) {
+        } else {
+          setSecondNum(prevState => prevState + e.target.innerText);
+        }
+      }
     }
   }
 
@@ -155,7 +172,7 @@ function Calculator() {
       </div>
       <div className='row'>
         <span className='num-zero' onClick={handleNumbers}>0</span>
-        <span className='numbers'>.</span>
+        <span className='numbers' onClick={handleNumbers}>.</span>
         <span className='icons'>=</span>
       </div>
     </div>
