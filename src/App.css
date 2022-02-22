@@ -93,6 +93,26 @@
   margin-right: 10px;
   width: 250px;
   height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator-result {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.numbers {
+  
+}
+
+.icons {
+
 }
 
 .input-form {

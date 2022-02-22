@@ -100,7 +100,36 @@ function TodoDone(props) {
 function Calculator() {
   return (
     <div className='calculator'>
-      CALCULATOR
+      <span className='calculator-result'>RESULT</span>
+      <div className='row'>
+        <span className='icons'>AC</span>
+        <span className='icons'>+/-</span>
+        <span className='icons'>%</span>
+        <span className='icons'>÷</span>
+      </div>
+      <div className='row'>
+        <span className='numbers'>7</span>
+        <span className='numbers'>8</span>
+        <span className='numbers'>9</span>
+        <span className='icons'>×</span>
+      </div>
+      <div className='row'>
+        <span className='numbers'>4</span>
+        <span className='numbers'>5</span>
+        <span className='numbers'>6</span>
+        <span className='icons'>-</span>
+      </div>
+      <div className='row'>
+        <span className='numbers'>1</span>
+        <span className='numbers'>2</span>
+        <span className='numbers'>3</span>
+        <span className='icons'>+</span>
+      </div>
+      <div className='row'>
+        <span className='numbers'>0</span>
+        <span className='numbers'>.</span>
+        <span className='icons'>=</span>
+      </div>
     </div>
   )
 }
