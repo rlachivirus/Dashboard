@@ -98,45 +98,63 @@ function TodoDone(props) {
 }
 
 function Calculator() {
+
   const [ firstNum, setFirstNum ] = useState('0');
+  const [ secondNum, setSecondNum ] = useState('');
+  const [ result, setResult ] = useState(null);
+  const [ sign, setSign ] = useState('');
+  // const numbers = [];
 
   const handleNumbers = (e) => {
-    if (firstNum === '0') {
-      setFirstNum(e.target.innerText)  
+    if (sign === '') {
+      if (firstNum === '0') {
+        setFirstNum(e.target.innerText);
+      } else {
+        setFirstNum(prevState => prevState + e.target.innerText);
+      }
     } else {
-      setFirstNum(prevState => prevState + e.target.innerText)
+      // numbers.push(firstNum);
+      setSecondNum(prevState => prevState + e.target.innerText);
     }
   }
+
+  const handleSign = (e) => {
+    console.log(e.target.innerText)
+    setSign(e.target.innerText)
+  }
+
   console.log(firstNum)
+  console.log(secondNum)
+  console.log(sign)
   return (
     <div className='calculator'>
-      <span className='calculator-result'>{firstNum}</span>
+      <span className='calculator-result'>{ result ? result : secondNum.length === 0 ? firstNum : secondNum }</span>
       <div className='row'>
         <span className='icons'>AC</span>
-        <span className='icons'>+/-</span>
+        <span className='icons' onClick={handleSign}>+/-</span>
         <span className='icons'>%</span>
         <span className='icons'>÷</span>
       </div>
       <div className='row'>
         <span className='numbers' onClick={handleNumbers}>7</span>
         <span className='numbers' onClick={handleNumbers}>8</span>
-        <span className='numbers'>9</span>
+        <span className='numbers' onClick={handleNumbers}>9</span>
         <span className='icons'>×</span>
       </div>
       <div className='row'>
-        <span className='numbers'>4</span>
-        <span className='numbers'>5</span>
-        <span className='numbers'>6</span>
+        <span className='numbers' onClick={handleNumbers}>4</span>
+        <span className='numbers' onClick={handleNumbers}>5</span>
+        <span className='numbers' onClick={handleNumbers}>6</span>
         <span className='icons'>-</span>
       </div>
       <div className='row'>
-        <span className='numbers'>1</span>
-        <span className='numbers'>2</span>
-        <span className='numbers'>3</span>
-        <span className='icons'>+</span>
+        <span className='numbers' onClick={handleNumbers}>1</span>
+        <span className='numbers' onClick={handleNumbers}>2</span>
+        <span className='numbers' onClick={handleNumbers}>3</span>
+        <span className='icons' onClick={handleSign}>+</span>
       </div>
       <div className='row'>
-        <span className='num-zero'>0</span>
+        <span className='num-zero' onClick={handleNumbers}>0</span>
         <span className='numbers'>.</span>
         <span className='icons'>=</span>
       </div>
