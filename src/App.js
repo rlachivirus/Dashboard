@@ -103,7 +103,6 @@ function Calculator() {
   const [ secondNum, setSecondNum ] = useState('');
   const [ result, setResult ] = useState(null);
   const [ sign, setSign ] = useState('');
-  // const numbers = [];
 
   const handleNumbers = (e) => {
     setResult(null)
@@ -181,27 +180,13 @@ function Calculator() {
           } else {
           setResult(Number(firstNum) / Number(secondNum));
         }
-      } else if (sign === '+/-') {
-
-      } else if (sign === '%') {
-
-      } else {
-        if (secondNum) {
-          setSecondNum('');
-          setSign('');
-        } else if (firstNum) {
-          setFirstNum('0')
-        }
       }
     }
     setFirstNum('0');
     setSecondNum('');
     setSign('');
   }
-  console.log(Number(firstNum) / Number(secondNum))
-  console.log(firstNum)
-  console.log(secondNum)
-  console.log(sign)
+
   return (
     <div className='calculator'>
       <span className='calculator-result'>{ result ? result : secondNum.length === 0 ? firstNum : secondNum }</span>
