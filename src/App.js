@@ -67,7 +67,6 @@ function TodoList(props) {
       <div className='todos'>
         <ul className='todo-lists'>
           {props.lists.map((list, idx) => {
-
               return (
                 <span className='todo-memo' key={`todo-${idx}`}>
                   <p>{list}</p>

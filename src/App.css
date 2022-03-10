@@ -42,8 +42,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  top: 20%;
-  left: 25%;
+  top: 15%;
+  left: 20%;
+  padding: 5%;
+  height: 60%;
+  /* width: 100%; */
+  /* background-color: lightgray; */
 }
 
 .todo-structure {
@@ -54,10 +58,12 @@
 
 .weather {
   float: none;
-  border: 2px solid black;
+  /* border: 2px solid lightgray; */
+  box-shadow: 0px 0px 3px 3px lightgray;
+  border-radius: 15px;
   height: 130px;
   margin-bottom: 20px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -88,11 +94,13 @@
 }
 
 .calculator {
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  box-shadow: 0px 0px 3px 3px lightgray;
+  border-radius: 15px;
   margin-top: 20px;
   margin-right: 10px;
   width: 250px;
-  height: 300px;
+  height: 304px;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -115,6 +123,7 @@
 
 .numbers {
   border: 2px solid black;
+  /* box-shadow: 0px 0px 3px 3px lightgray; */
   border-radius: 50px;
   height: 40px;
   width: 40px;
@@ -147,13 +156,17 @@
 }
 
 .input-form {
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  box-shadow: 0px 0px 3px 3px lightgray;
+  border-radius: 15px;
   margin-right: 10px;
   padding: 10px;
 }
 
 .todos {
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  box-shadow: 0px 0px 3px 3px lightgray;
+  border-radius: 15px;
   width: 200px;
   margin-left: 10px;
   margin-right: 10px;
@@ -162,21 +175,25 @@
 }
 
 .done {
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  box-shadow: 0px 0px 3px 3px lightgray;
+  border-radius: 15px;
   width: 200px;
   margin-left: 10px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   overflow: scroll;
   height: 348px;
 }
 .todo-lists {
   display: flex;
   flex-direction: column;
+
 }
 
 .todo-memo {
   position: relative;
   border: 2px solid black;
+  border-radius: 15px;
   height: 100px;
   width: 165px;
   left: -30px;
@@ -189,6 +206,7 @@
 .done-memo {
   position: relative;
   border: 2px solid black;
+  border-radius: 15px;
   height: 100px;
   width: 165px;
   left: -30px;
@@ -201,7 +219,7 @@
 button {
   /* float: right; */
   position: absolute;
-  width: 25px;
+  /* width: 25px; */
   left: 140px;
   top: 10px;
 }
@@ -215,7 +233,7 @@ p {
   position: absolute;
   width: 200px;
   height: 50px;
-  top: -15%;
+  top: -3%;
   font-size: 28px;
 }
 
