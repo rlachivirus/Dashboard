@@ -124,7 +124,9 @@ function Calculator() {
       } else {
         if (e.target.innerText === '.' && firstNum.includes('.')) {
         } else {
-          setFirstNum(prevState => prevState + e.target.innerText);
+          if (firstNum.length < 8) {
+            setFirstNum(prevState => prevState + e.target.innerText);
+          }
         }
       }
     } else {
@@ -137,7 +139,9 @@ function Calculator() {
       } else {
         if (e.target.innerText === '.' && secondNum.includes('.')) {
         } else {
-          setSecondNum(prevState => prevState + e.target.innerText);
+          if (secondNum.length < 8) {
+            setSecondNum(prevState => prevState + e.target.innerText);
+          }
         }
       }
     }
@@ -175,21 +179,36 @@ function Calculator() {
   }
 
   const handleResult = () => {
+    let num = '';
+
     if (firstNum && secondNum && sign) {
       if (sign === '+') {
-        setResult(Number(firstNum) + Number(secondNum));
+        // setResult(Number(firstNum) + Number(secondNum));
+        num = Number(firstNum) + Number(secondNum);
       } else if (sign === '-') {
-        setResult(Number(firstNum) - Number(secondNum));
+        // setResult(Number(firstNum) - Number(secondNum));
+        num = Number(firstNum) - Number(secondNum);
       } else if (sign === '×') {
-        setResult(Number(firstNum) * Number(secondNum));
+        // setResult(Number(firstNum) * Number(secondNum));
+        num = Number(firstNum) * Number(secondNum);
       } else if (sign === '÷') {
         if (secondNum === '0') {
             setResult('Error')
           } else {
-          setResult(Number(firstNum) / Number(secondNum));
+          // setResult(Number(firstNum) / Number(secondNum));
+          num = Number(firstNum) / Number(secondNum);
         }
       }
     }
+
+    let numInStr = String(num)
+
+    if (numInStr.length > 8) {
+      setResult('Broken..')
+    } else {
+      setResult(numInStr);
+    }
+
     setFirstNum('0');
     setSecondNum('');
     setSign('');
