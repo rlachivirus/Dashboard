@@ -57,8 +57,15 @@ function TodoForm(props) {
 function TodoList(props) {
 
   const sendToDone = (idx) => {
-
     props.done(idx);
+  }
+
+  const priorityUp = (idx) => {
+    props.moveUp(idx);
+  }
+
+  const priorityDown = (idx) => {
+    props.moveDown(idx);
   }
 
   return (
@@ -68,7 +75,11 @@ function TodoList(props) {
             return (
               <span className='todo-memo' key={`todo-${idx}`}>#{idx + 1}
                 <p>{list}</p>
-                <button onClick={() => sendToDone(idx)}>></button>
+                <div className='todo-buttons'>
+                  <button onClick={() => sendToDone(idx)}>></button>
+                  <button onClick={() => priorityUp(idx)}>↑</button>
+                  <button onClick={() => priorityDown(idx)}>↓</button>
+                </div>
               </span>
             )
           })}
@@ -258,10 +269,24 @@ function App() {
   const [ lists, setLists ] = useState(todoLists);
   const [ done, setDone ] = useState(doneLists);
 
+  const moveUp = (idx) => {
+    if (idx - 1 >= 0) {
+      let idxToMove = lists.splice(idx, 1);
+      lists.splice(idx - 1, 0, idxToMove);
+      setLists([...lists]);
+    }
+  }
+
+  const moveDown = (idx) => {
+    let idxToMove = lists.splice(idx, 1);
+    lists.splice(idx + 1, 0, idxToMove);
+    setLists([...lists]);
+  }
+
   const todoDone = (idx) => {
     let newList = lists.splice(idx, 1)
     setLists([...lists]);
-    setDone([...done, newList]);
+    setDone([newList, ...done]);
   }
 
   const addTodo = (todo) => {
@@ -279,7 +304,7 @@ function App() {
         </div>
         <div>
           <label>Todo</label>
-          <TodoList lists={lists} done={todoDone}/>
+          <TodoList lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown}/>
         </div>
         <div>
           <label>Done</label>
