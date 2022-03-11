@@ -23,7 +23,7 @@
   float: none;
   /* border: 2px solid lightgray; */
   /* box-shadow: 0px 0px 3px 3px lightgray; */
-  box-shadow: 0px 0px 3px 3px darkorange;
+  box-shadow: 0px 0px 3px 3px black;
   border-radius: 15px;
   height: 130px;
   margin-bottom: 20px;
@@ -61,7 +61,7 @@
 .calculator {
   /* border: 2px solid black; */
   background-color: white;
-  box-shadow: 0px 0px 3px 3px darkorange;
+  box-shadow: 0px 0px 3px 3px black;
   border-radius: 15px;
   margin-top: 20px;
   margin-right: 10px;
@@ -124,7 +124,7 @@
 .input-form {
   /* border: 2px solid black; */
   background-color: white;
-  box-shadow: 0px 0px 3px 3px darkorange;
+  box-shadow: 0px 0px 3px 3px black;
   border-radius: 15px;
   margin-right: 10px;
   /* padding: 10px; */
@@ -133,7 +133,7 @@
 .todos {
   /* border: 2px solid black; */
   background-color: white;
-  box-shadow: 0px 0px 3px 3px darkorange;
+  box-shadow: 0px 0px 3px 3px black;
   border-radius: 15px;
   width: 200px;
   margin-top: 18px;
@@ -146,7 +146,7 @@
 .done {
   /* border: 2px solid black; */
   background-color: white;
-  box-shadow: 0px 0px 3px 3px darkorange;
+  box-shadow: 0px 0px 3px 3px black;
   border-radius: 15px;
   width: 200px;
   margin-left: 10px;
@@ -204,9 +204,10 @@ button {
 .helloWorld {
   font-size: 30px;
   font-family: comicsansms;
-  color: darkorange;
+  color: black;
   padding-bottom: 10px;
-  border-bottom: 2px solid darkorange;
+  /* border-bottom: 1px solid black; */
+  /* box-shadow: 0px 5px 5px -5px black; */
   margin-top: 0px;
 }
 
