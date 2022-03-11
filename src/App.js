@@ -66,7 +66,7 @@ function TodoList(props) {
       <ul className='todo-lists'>
         {props.lists.map((list, idx) => {
             return (
-              <span className='todo-memo' key={`todo-${idx}`}>
+              <span className='todo-memo' key={`todo-${idx}`}>#{idx + 1}
                 <p>{list}</p>
                 <button onClick={() => sendToDone(idx)}>></button>
               </span>
@@ -83,7 +83,11 @@ function TodoDone(props) {
       <ul className='done-lists'>
         {props.done.map((list, idx) => {
 
-          return <span className='done-memo' key={`todo-${idx}`}>{list}</span>
+          return (
+            <span className='done-memo' key={`todo-${idx}`}>
+              <p>{list}</p>
+            </span>
+          )
         })}
       </ul>
     </div>
