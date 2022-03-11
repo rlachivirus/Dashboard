@@ -94,9 +94,10 @@
 }
 
 .numbers {
-  border: 2px solid lightgrey;
+  border: 2px solid rgb(179, 179, 179);
   background-color: rgba(235, 235, 235, 0.438);
   color: rgb(68, 68, 68);
+  cursor: default;
   border-radius: 50px;
   height: 40px;
   width: 40px;
@@ -104,10 +105,15 @@
   line-height: 1.7;
 }
 
+.numbers:hover {
+  background-color: rgba(196, 196, 196, 0.438);
+}
+
 .num-zero {
-  border: 2px solid lightgrey;
+  border: 2px solid rgb(179, 179, 179);
   background-color: rgba(235, 235, 235, 0.438);
   color: rgb(68, 68, 68);
+  cursor: default;
   border-radius: 50px;
   height: 40px;
   width: 99px;
@@ -115,16 +121,25 @@
   line-height: 1.7;
 }
 
+.num-zero:hover {
+  background-color: rgba(196, 196, 196, 0.438);
+}
+
 .icons {
-  border: 2px solid lightgrey;
+  border: 2px solid rgb(179, 179, 179);
   background-color: rgba(235, 235, 235, 0.438);
   color: rgb(68, 68, 68);
+  cursor: default;
   border-radius: 50px;
   height: 40px;
   width: 40px;
   text-align: center;
   line-height: 1.2;
   font-size: 29px;
+}
+
+.icons:hover {
+  background-color: rgba(196, 196, 196, 0.438);
 }
 
 .icons:nth-child(1), .icons:nth-child(2), .icons:nth-child(3) {
