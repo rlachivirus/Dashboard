@@ -23,7 +23,7 @@
   float: none;
   /* border: 2px solid lightgray; */
   /* box-shadow: 0px 0px 3px 3px lightgray; */
-  box-shadow: 0px 0px 3px 3px black;
+  box-shadow: 0px 0px 3px black;
   border-radius: 15px;
   height: 130px;
   margin-bottom: 20px;
@@ -32,6 +32,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   background-color: white;
+  padding: 5px;
 }
 
 .forecast {
@@ -43,6 +44,7 @@
 
 .forecast-date {
   font-size: 15px;
+  color: rgb(68, 68, 68);
 }
 
 .forecast-img {
@@ -52,21 +54,23 @@
 
 .forecast-text {
   font-size: 20px;
+  color: rgb(68, 68, 68);
 }
 
 .forecast-temp {
   font-size: 15px;
+  color: rgb(68, 68, 68);
 }
 
 .calculator {
   /* border: 2px solid black; */
   background-color: white;
-  box-shadow: 0px 0px 3px 3px black;
+  box-shadow: 0px 0px 3px black;
   border-radius: 15px;
   margin-top: 20px;
   margin-right: 10px;
   width: 250px;
-  height: 304px;
+  height: 305px;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -76,9 +80,11 @@
 .calculator-result {
   /* margin-top: 10px; */
   /* margin-bottom: 10px; */
+  color: rgb(68, 68, 68);
   align-self: flex-end;
-  margin-right: 25px;
+  margin-right: 24px;
   font-size: 40px;
+  padding: 0px 0px 2px;
 }
 
 .row {
@@ -88,8 +94,9 @@
 }
 
 .numbers {
-  border: 2px solid black;
-  /* box-shadow: 0px 0px 3px 3px lightgray; */
+  border: 2px solid lightgrey;
+  background-color: rgba(235, 235, 235, 0.438);
+  color: rgb(68, 68, 68);
   border-radius: 50px;
   height: 40px;
   width: 40px;
@@ -98,7 +105,9 @@
 }
 
 .num-zero {
-  border: 2px solid black;
+  border: 2px solid lightgrey;
+  background-color: rgba(235, 235, 235, 0.438);
+  color: rgb(68, 68, 68);
   border-radius: 50px;
   height: 40px;
   width: 99px;
@@ -107,7 +116,9 @@
 }
 
 .icons {
-  border: 2px solid black;
+  border: 2px solid lightgrey;
+  background-color: rgba(235, 235, 235, 0.438);
+  color: rgb(68, 68, 68);
   border-radius: 50px;
   height: 40px;
   width: 40px;
@@ -124,36 +135,36 @@
 .input-form {
   /* border: 2px solid black; */
   background-color: white;
-  box-shadow: 0px 0px 3px 3px black;
+  box-shadow: 0px 0px 3px black;
+  color: rgb(68, 68, 68);
   border-radius: 15px;
   margin-right: 10px;
-  /* padding: 10px; */
 }
 
 .todos {
   /* border: 2px solid black; */
   background-color: white;
-  box-shadow: 0px 0px 3px 3px black;
+  box-shadow: 0px 0px 3px black;
   border-radius: 15px;
   width: 200px;
   margin-top: 18px;
   margin-left: 10px;
   margin-right: 10px;
   overflow: scroll;
-  height: 348px;
+  height: 340px;
 }
 
 .done {
   /* border: 2px solid black; */
   background-color: white;
-  box-shadow: 0px 0px 3px 3px black;
+  box-shadow: 0px 0px 3px black;
   border-radius: 15px;
   width: 200px;
   margin-left: 10px;
   margin-top: 18px;
   /* margin-right: 10px; */
   overflow: scroll;
-  height: 348px;
+  height: 340px;
 
 }
 .todo-lists {
@@ -164,28 +175,36 @@
 
 .todo-memo {
   position: relative;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 15px;
   height: 100px;
   width: 165px;
-  left: -30px;
-  margin-bottom: 5px;
+  left: -27.5px;
+  margin-bottom: 10px;
   overflow: auto;
   word-break: break-word;
   padding: 5px;
+  box-shadow: 0px 0px 3px black;
+}
+
+.todo-memo p {
+  text-align: center;
+  width: 130px;
+
 }
 
 .done-memo {
   position: relative;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 15px;
   height: 100px;
   width: 165px;
-  left: -30px;
+  left: -27.5px;
   margin-bottom: 5px;
   overflow: auto;
   word-break: break-word;
   padding: 5px;
+  box-shadow: 0px 0px 3px black;
 }
 
 button {
@@ -204,7 +223,7 @@ button {
 .helloWorld {
   font-size: 30px;
   font-family: comicsansms;
-  color: black;
+  color: rgb(68, 68, 68);
   padding-bottom: 10px;
   /* border-bottom: 1px solid black; */
   /* box-shadow: 0px 5px 5px -5px black; */
@@ -222,10 +241,17 @@ span {
 label {
   position: relative;
   left: 85px;
+  font-size: 20px;
+  /* font-weight: bold; */
+  font-family: comicsansms;
 }
 
 input {
   margin-left: 20px;
   margin-bottom: 20px;
   /* margin-right: 10px; */
+}
+
+p {
+  color: rgb(68, 68, 68);
 }

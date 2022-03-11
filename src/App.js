@@ -275,7 +275,7 @@ function App() {
           <Calculator />
         </div>
         <div>
-          <label>Todos</label>
+          <label>Todo</label>
           <TodoList lists={lists} done={todoDone}/>
         </div>
         <div>
