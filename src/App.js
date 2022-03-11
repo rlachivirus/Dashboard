@@ -217,7 +217,7 @@ function Calculator() {
 }
 
 function HelloWorld() {
-  const initialWord = '';
+  const initialWord = 'World!';
 
   const [ word, setWord ] = useState(initialWord);
 
@@ -225,18 +225,17 @@ function HelloWorld() {
     const changeFont = setInterval(() => {
       let font = document.getElementById('helloWorld');
       // console.log(font.style.fontFamily)
-      if (font.style.fontFamily === 'times') {
+      if (font.style.fontFamily === 'comicsansms') {
+        font.style.fontFamily = 'times'
+        setWord('World!!');
+      } else if (font.style.fontFamily === 'times') {
+        font.style.fontFamily = 'helvetica'
+        setWord('World!!!');
+      } else if (font.style.fontFamily === 'helvetica') {
         font.style.fontFamily = 'comicsansms'
         setWord('World!');
-      } else if (font.style.fontFamily === 'comicsansms') {
-        font.style.fontFamily = 'helvetica'
-        setWord('World!!');
-      } else if (font.style.fontFamily === 'helvetica') {
-        font.style.fontFamily = 'times'
-        setWord('World!!!');
       } else if (font.style.fontFamily !== 'default') {
-        font.style.fontFamily = 'times'
-        setWord('World');
+        font.style.fontFamily = 'comicsansms'
       }
     }, 1000)
 
