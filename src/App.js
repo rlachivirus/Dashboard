@@ -250,7 +250,7 @@ function HelloWorld() {
   })
 
   return (
-    <p>Hello <span id='helloWorld'>{word}</span></p>
+    <p className='helloWorld'>Hello <span id='helloWorld'>{word}</span></p>
   )
 }
 

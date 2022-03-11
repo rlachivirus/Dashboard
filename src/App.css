@@ -229,12 +229,13 @@ button {
   flex-direction: column;
 }
 
-p {
-  position: absolute;
-  width: 200px;
-  height: 50px;
-  top: -3%;
-  font-size: 28px;
+.helloWorld {
+  font-size: 30px;
+  font-family: comicsansms;
+}
+
+#helloWorld {
+  font-size: 30px;
 }
 
 span {
@@ -244,14 +245,6 @@ span {
 label {
   /* border: 2px solid black; */
   text-align: center;
-}
-
-span p {
-  position: relative;
-  /* border: 2px solid black; */
-  height: 80px;
-  width: 130px;
-  margin: 10px 0 0 0;
 }
 
 input {
