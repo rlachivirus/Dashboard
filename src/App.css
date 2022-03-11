@@ -1,53 +1,16 @@
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
 .entire-structure {
   position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  top: 15%;
+  top: 100px;
   left: 20%;
   padding: 5%;
-  height: 60%;
+  height: 600px;
   /* width: 100%; */
-  /* background-color: lightgray; */
+  background-color: rgba(235, 235, 235, 0.438);
+  border-radius: 15px;
+  /* border: solid 2px darkgray; */
 }
 
 .todo-structure {
@@ -59,7 +22,8 @@
 .weather {
   float: none;
   /* border: 2px solid lightgray; */
-  box-shadow: 0px 0px 3px 3px lightgray;
+  /* box-shadow: 0px 0px 3px 3px lightgray; */
+  box-shadow: 0px 0px 3px 3px darkorange;
   border-radius: 15px;
   height: 130px;
   margin-bottom: 20px;
@@ -67,6 +31,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  background-color: white;
 }
 
 .forecast {
@@ -95,7 +60,8 @@
 
 .calculator {
   /* border: 2px solid black; */
-  box-shadow: 0px 0px 3px 3px lightgray;
+  background-color: white;
+  box-shadow: 0px 0px 3px 3px darkorange;
   border-radius: 15px;
   margin-top: 20px;
   margin-right: 10px;
@@ -157,17 +123,20 @@
 
 .input-form {
   /* border: 2px solid black; */
-  box-shadow: 0px 0px 3px 3px lightgray;
+  background-color: white;
+  box-shadow: 0px 0px 3px 3px darkorange;
   border-radius: 15px;
   margin-right: 10px;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .todos {
   /* border: 2px solid black; */
-  box-shadow: 0px 0px 3px 3px lightgray;
+  background-color: white;
+  box-shadow: 0px 0px 3px 3px darkorange;
   border-radius: 15px;
   width: 200px;
+  margin-top: 18px;
   margin-left: 10px;
   margin-right: 10px;
   overflow: scroll;
@@ -176,18 +145,21 @@
 
 .done {
   /* border: 2px solid black; */
-  box-shadow: 0px 0px 3px 3px lightgray;
+  background-color: white;
+  box-shadow: 0px 0px 3px 3px darkorange;
   border-radius: 15px;
   width: 200px;
   margin-left: 10px;
+  margin-top: 18px;
   /* margin-right: 10px; */
   overflow: scroll;
   height: 348px;
+
 }
 .todo-lists {
+  /* position: relative; */
   display: flex;
   flex-direction: column;
-
 }
 
 .todo-memo {
@@ -232,6 +204,10 @@ button {
 .helloWorld {
   font-size: 30px;
   font-family: comicsansms;
+  color: darkorange;
+  padding-bottom: 10px;
+  border-bottom: 2px solid darkorange;
+  margin-top: 0px;
 }
 
 #helloWorld {
@@ -243,11 +219,12 @@ span {
 }
 
 label {
-  /* border: 2px solid black; */
-  text-align: center;
+  position: relative;
+  left: 85px;
 }
 
 input {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  /* margin-right: 10px; */
 }

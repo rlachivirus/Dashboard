@@ -46,9 +46,9 @@ function TodoForm(props) {
 
   return (
     <form className='input-form' onSubmit={handleSubmit}>
-      <label>Add things to do</label>
+      {/* <label>Add things to do</label> */}
       <br/>
-      <input type='text' value={todo} onChange={handleChange}/>
+      <input type='text' placeholder='Add New Todo' value={todo} onChange={handleChange}/>
       <input type='submit' value='Add'/>
     </form>
   )
@@ -62,37 +62,31 @@ function TodoList(props) {
   }
 
   return (
-    <label>To dos
-      <hr />
-      <div className='todos'>
-        <ul className='todo-lists'>
-          {props.lists.map((list, idx) => {
-              return (
-                <span className='todo-memo' key={`todo-${idx}`}>
-                  <p>{list}</p>
-                  <button onClick={() => sendToDone(idx)}>></button>
-                </span>
-              )
-            })}
-        </ul>
-      </div>
-    </label >
+    <div className='todos'>
+      <ul className='todo-lists'>
+        {props.lists.map((list, idx) => {
+            return (
+              <span className='todo-memo' key={`todo-${idx}`}>
+                <p>{list}</p>
+                <button onClick={() => sendToDone(idx)}>></button>
+              </span>
+            )
+          })}
+      </ul>
+    </div>
   )
 }
 
 function TodoDone(props) {
   return (
-    <label>Done
-      <hr />
-      <div className='done'>
-        <ul className='done-lists'>
-          {props.done.map((list, idx) => {
+    <div className='done'>
+      <ul className='done-lists'>
+        {props.done.map((list, idx) => {
 
-            return <span className='done-memo' key={`todo-${idx}`}>{list}</span>
-          })}
-        </ul>
-      </div>
-    </label>
+          return <span className='done-memo' key={`todo-${idx}`}>{list}</span>
+        })}
+      </ul>
+    </div>
   )
 }
 
@@ -280,8 +274,14 @@ function App() {
           <TodoForm addTodo={addTodo}/>
           <Calculator />
         </div>
-        <TodoList lists={lists} done={todoDone}/>
-        <TodoDone done={done}/>
+        <div>
+          <label>Todos</label>
+          <TodoList lists={lists} done={todoDone}/>
+        </div>
+        <div>
+          <label>Done</label>
+          <TodoDone done={done}/>
+        </div>
       </div>
     </div>
   );
