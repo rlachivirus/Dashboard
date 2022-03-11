@@ -19,6 +19,13 @@
   justify-content: center;
 }
 
+.loadingSign {
+  position: relative;
+  font-size: 30px;
+  text-align: center;
+  margin: 60px;
+}
+
 .weather {
   float: none;
   /* border: 2px solid lightgray; */
@@ -242,7 +249,8 @@ button {
   padding-bottom: 10px;
   /* border-bottom: 1px solid black; */
   /* box-shadow: 0px 5px 5px -5px black; */
-  margin-top: 0px;
+  /* margin-top: 0px; */
+  margin: 0px;
 }
 
 #helloWorld {

@@ -10,8 +10,8 @@ function Weather() {
       .then((response) => setWeather(response.data))
   }, []);
 
-  if ((!weather)) return null;
-  // console.log(weather)
+  if ((!weather)) return <div className='loadingSign'>Loading...</div>;
+
   return (
     <div className='weather'>
       {/* <div className='forecast'> */}
