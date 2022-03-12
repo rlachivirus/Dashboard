@@ -217,7 +217,7 @@
 
 .todo-memo {
   position: relative;
-  /* border: 2px solid black; */
+  font-family: comicsansms;
   border-radius: 15px;
   height: 100px;
   width: 165px;
@@ -248,7 +248,7 @@
 
 .done-memo {
   position: relative;
-  /* border: 2px solid black; */
+  font-family: comicsansms;
   border-radius: 15px;
   height: 100px;
   width: 165px;
