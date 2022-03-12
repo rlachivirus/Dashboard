@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  top: 4%;
+  top: 3.5%;
   left: 20%;
   padding: 5%;
   height: 600px;
@@ -248,10 +248,6 @@
   font-size: 23px;
   color: rgb(68, 68, 68);
   text-align: center;
-}
-
-.done-memo p {
-  margin-top: 30px;
 }
 
 .done-lists {
