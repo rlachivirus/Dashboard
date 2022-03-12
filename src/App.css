@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  top: 100px;
+  top: 4%;
   left: 20%;
   padding: 5%;
   height: 600px;
@@ -27,7 +27,7 @@
 }
 
 .weather {
-  float: none;
+  /* float: none; */
   /* border: 2px solid lightgray; */
   /* box-shadow: 0px 0px 3px 3px lightgray; */
   box-shadow: 0px 0px 3px black;
@@ -35,6 +35,7 @@
   height: 130px;
   margin-bottom: 20px;
   /* margin-right: 10px; */
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -67,6 +68,12 @@
 .forecast-temp {
   font-size: 15px;
   color: rgb(68, 68, 68);
+}
+
+.degreeType {
+  position: absolute;
+  top: 80%;
+  right: 2%;
 }
 
 .calculator {

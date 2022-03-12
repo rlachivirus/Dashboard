@@ -4,28 +4,44 @@ import axios from 'axios'
 
 function Weather() {
   const [ weather, setWeather ] = useState(null);
+  const [ degreeType, setDegreeType ] = useState('F')
 
   useEffect(() => {
     axios.get('http://api.weatherapi.com/v1/forecast.json?key=3d83602b387a49c39ba33428222102&q=New York&days=7&aqi=no&alerts=no')
       .then((response) => setWeather(response.data))
   }, []);
 
+  const changeDegree = () => {
+    if (degreeType === 'F') {
+      setDegreeType('C');
+    } else {
+      setDegreeType('F');
+    }
+  }
+
   if ((!weather)) return <div className='loadingSign'>Loading...</div>;
 
   return (
     <div className='weather'>
-      {/* <div className='forecast'> */}
-        {weather.forecast.forecastday.map((weath) => {
-          return (
-            <div key={weath.date} className='forecast'>
-              <span className='forecast-date'>{weath.date}</span>
-              <img className='forecast-img' src={weath.day.condition.icon} />
-              <span className='forecast-text'>{weath.day.condition.text}</span>
-              <span className='forecast-temp'>{`${weath.day.mintemp_f}° / ${weath.day.maxtemp_f}°`}</span>
-            </div>
-            )
-          })}
-          {/* </div> */}
+      {weather.forecast.forecastday.map((weath) => {
+
+        let temperature = degreeType === 'F' ? (
+          <span className='forecast-temp'>{`${weath.day.mintemp_f}°F / ${weath.day.maxtemp_f}°F`}</span>
+        ) : (
+          <span className='forecast-temp'>{`${weath.day.mintemp_c}°C / ${weath.day.maxtemp_c}°C`}</span>
+        )
+
+        return (
+          <div key={weath.date} className='forecast'>
+            <span className='forecast-date'>{weath.date}</span>
+            <img className='forecast-img' src={weath.day.condition.icon} />
+            <span className='forecast-text'>{weath.day.condition.text}</span>
+            {/* <span className='forecast-temp'>{`${weath.day.mintemp_f}°F / ${weath.day.maxtemp_f}°F`}</span> */}
+            {temperature}
+          </div>
+          )
+        })}
+      <button className='degreeType' onClick={() => changeDegree()}>{degreeType === 'F' ? '°C' : '°F'}</button>
     </div>
   )
 }
