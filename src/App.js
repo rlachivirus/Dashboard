@@ -31,9 +31,13 @@ function Weather() {
           <span className='forecast-temp'>{`${weath.day.mintemp_c}°C / ${weath.day.maxtemp_c}°C`}</span>
         )
 
+        let splitDate = weath.date.split('-');
+        let currMonth = splitDate[1][0] === '0' ? splitDate[1][1] : splitDate[1];
+        let weatherDates = currMonth + '/' + splitDate[2] + '/' + splitDate[0];
+
         return (
           <div key={weath.date} className='forecast'>
-            <span className='forecast-date'>{weath.date}</span>
+            <span className='forecast-date'>{weatherDates}</span>
             <img className='forecast-img' src={weath.day.condition.icon} />
             <span className='forecast-text'>{weath.day.condition.text}</span>
             {/* <span className='forecast-temp'>{`${weath.day.mintemp_f}°F / ${weath.day.maxtemp_f}°F`}</span> */}
@@ -364,6 +368,7 @@ function App() {
           <TodoDone done={done}/>
         </div>
       </div>
+      <p className='copyRight'>AK © 2022</p>
     </div>
   );
 }

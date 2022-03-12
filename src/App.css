@@ -305,3 +305,8 @@ p {
   margin-top: 5px;
   /* color: rgb(68, 68, 68); */
 }
+
+.copyRight {
+  position: relative;
+  /* top: 50%; */
+}
