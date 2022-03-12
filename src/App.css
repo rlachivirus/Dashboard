@@ -268,7 +268,7 @@
   flex-direction: column;
 }
 
-.helloWorld {
+.helloNewYork {
   font-size: 30px;
   font-family: comicsansms;
   color: rgb(68, 68, 68);
@@ -279,7 +279,7 @@
   margin: 0px;
 }
 
-#helloWorld {
+#helloNewYork {
   font-size: 30px;
 }
 

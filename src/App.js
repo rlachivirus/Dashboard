@@ -266,24 +266,24 @@ function Calculator() {
   )
 }
 
-function HelloWorld() {
-  const initialWord = 'World!';
+function HelloNewYork() {
+  const initialWord = 'New York!';
 
   const [ word, setWord ] = useState(initialWord);
 
   useEffect(() => {
     const changeFont = setInterval(() => {
-      let font = document.getElementById('helloWorld');
+      let font = document.getElementById('helloNewYork');
       // console.log(font.style.fontFamily)
       if (font.style.fontFamily === 'comicsansms') {
         font.style.fontFamily = 'times'
-        setWord('World!!');
+        setWord('New York!!');
       } else if (font.style.fontFamily === 'times') {
         font.style.fontFamily = 'helvetica'
-        setWord('World!!!');
+        setWord('New York!!!');
       } else if (font.style.fontFamily === 'helvetica') {
         font.style.fontFamily = 'comicsansms'
-        setWord('World!');
+        setWord('New York!');
       } else if (font.style.fontFamily !== 'default') {
         font.style.fontFamily = 'comicsansms'
       }
@@ -293,7 +293,7 @@ function HelloWorld() {
   })
 
   return (
-    <p className='helloWorld'>Hello <span id='helloWorld'>{word}</span></p>
+    <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
   ) 
 }
 
@@ -346,7 +346,7 @@ function App() {
   return (
     <div className='entire-structure'>
       <div className='header'>
-        <HelloWorld />
+        <HelloNewYork />
         <DateAndTime />
       </div>
       <Weather />
