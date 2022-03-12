@@ -294,7 +294,22 @@ function HelloWorld() {
 
   return (
     <p className='helloWorld'>Hello <span id='helloWorld'>{word}</span></p>
-  )
+  ) 
+}
+
+function DateAndTime() {
+
+  const [ timeDate, setTimeDate ] = useState(new Date());
+
+  useEffect(() => {
+    const changeTime = setInterval(() => {
+      setTimeDate(new Date());
+    }, 1000)
+
+    return () => clearInterval(changeTime);
+  })
+
+  return <p className='timeAndDate'>{timeDate.toLocaleDateString()} {timeDate.toLocaleTimeString()}</p>
 }
 
 function App() {
@@ -330,7 +345,10 @@ function App() {
 
   return (
     <div className='entire-structure'>
-      <HelloWorld />
+      <div className='header'>
+        <HelloWorld />
+        <DateAndTime />
+      </div>
       <Weather />
       <div className='todo-structure'>
         <div>
