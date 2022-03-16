@@ -276,29 +276,32 @@ function HelloNewYork() {
 
   const [ word, setWord ] = useState(initialWord);
 
-  useEffect(() => {
-    const changeFont = setInterval(() => {
-      let font = document.getElementById('helloNewYork');
-      // console.log(font.style.fontFamily)
-      if (font.style.fontFamily === 'comicsansms') {
-        font.style.fontFamily = 'times'
-        setWord('New York!!');
-      } else if (font.style.fontFamily === 'times') {
-        font.style.fontFamily = 'helvetica'
-        setWord('New York!!!');
-      } else if (font.style.fontFamily === 'helvetica') {
-        font.style.fontFamily = 'comicsansms'
-        setWord('New York!');
-      } else if (font.style.fontFamily !== 'default') {
-        font.style.fontFamily = 'comicsansms'
-      }
-    }, 1000)
+  // useEffect(() => {
+  //   const changeFont = setInterval(() => {
+  //     let font = document.getElementById('helloNewYork');
+  //     // console.log(font.style.fontFamily)
+  //     if (font.style.fontFamily === 'comicsansms') {
+  //       font.style.fontFamily = 'times'
+  //       setWord('New York!!');
+  //     } else if (font.style.fontFamily === 'times') {
+  //       font.style.fontFamily = 'helvetica'
+  //       setWord('New York!!!');
+  //     } else if (font.style.fontFamily === 'helvetica') {
+  //       font.style.fontFamily = 'comicsansms'
+  //       setWord('New York!');
+  //     } else if (font.style.fontFamily !== 'default') {
+  //       font.style.fontFamily = 'comicsansms'
+  //     }
+  //   }, 1000)
 
-    return () => clearInterval(changeFont);
-  })
+  //   return () => clearInterval(changeFont);
+  // })
 
   return (
-    <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
+    // <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
+    <>
+      <p>LEAVE <br/> YOUR DAY <br/> TO ME</p>
+    </>
   ) 
 }
 
@@ -314,7 +317,7 @@ function DateAndTime() {
     return () => clearInterval(changeTime);
   })
 
-  return <p className='timeAndDate'>{timeDate.toLocaleDateString()} {timeDate.toLocaleTimeString()}</p>
+  return <p className='timeAndDate'>{timeDate.toLocaleDateString()} <br/> {timeDate.toLocaleTimeString()}</p>
 }
 
 function App() {
