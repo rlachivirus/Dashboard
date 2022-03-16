@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  font-family: 'Catamaran';
+}
+
 .entire-structure {
   position: absolute;
   display: flex;
@@ -31,7 +37,7 @@
   margin-bottom: 10px;
   align-self: flex-end;
   /* font-size: 30px; */
-  font-family: comicsansms;
+  /* font-family: comicsansms; */
 }
 
 .todo-structure {
@@ -226,7 +232,7 @@
 
 .todo-memo {
   position: relative;
-  font-family: comicsansms;
+  /* font-family: comicsansms; */
   border-radius: 15px;
   height: 100px;
   width: 165px;
@@ -257,7 +263,7 @@
 
 .done-memo {
   position: relative;
-  font-family: comicsansms;
+  /* font-family: comicsansms; */
   border-radius: 15px;
   height: 100px;
   width: 165px;
@@ -279,7 +285,7 @@
 
 .helloNewYork {
   font-size: 30px;
-  font-family: comicsansms;
+  /* font-family: comicsansms; */
   color: rgb(68, 68, 68);
   padding-bottom: 10px;
   /* border-bottom: 1px solid black; */
@@ -303,7 +309,7 @@ label {
   left: 85px;
   font-size: 20px;
   /* font-weight: bold; */
-  font-family: comicsansms;
+  /* font-family: comicsansms; */
 }
 
 input {
@@ -319,7 +325,7 @@ p {
 
 .copyRight {
   position: relative;
-  font-family: comicsansms;
+  /* font-family: comicsansms; */
   font-size: 13px;
   top: 5px;
   width: 692px;
