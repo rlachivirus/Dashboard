@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios'
+import Switch from 'react-switch'
 
 function Weather() {
   const [ weather, setWeather ] = useState(null);
@@ -351,6 +352,7 @@ function App() {
     <div className='entire-structure'>
       <div className='header'>
         <HelloNewYork />
+        <Switch uncheckedIcon='' checkedIcon='' />
         <DateAndTime />
       </div>
       <Weather />
