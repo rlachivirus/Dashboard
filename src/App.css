@@ -11,7 +11,7 @@
   /* justify-content: center; */
   /* align-items: center; */
   top: 9%;
-  left: 22%;
+  left: 13%;
   /* padding: 5%; */
   /* height: 650px; */
   /* width: 800px; */
@@ -31,6 +31,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.main-body {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
 }
 
 .timeAndDate {
@@ -59,16 +65,18 @@
   /* box-shadow: 0px 0px 3px 3px lightgray; */
   box-shadow: 0px 0px 3px black;
   border-radius: 15px;
-  height: 130px;
-  width: 680px;
-  margin-bottom: 20px;
+  /* height: 130px;
+  width: 680px; */
+  height: 340px;
+  width: 250px;
+  /* margin-bottom: 20px; */
   /* margin-right: 10px; */
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  background-color: white;
-  padding: 5px;
+  /* position: relative; */
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-evenly; */
+  /* background-color: white; */
+  /* padding: 5px; */
 }
 
 .forecast {
@@ -109,10 +117,10 @@
   background-color: white;
   box-shadow: 0px 0px 3px black;
   border-radius: 15px;
-  margin-top: 20px;
-  margin-right: 10px;
+  /* margin-top: 20px; */
+  /* margin-right: 10px; */
+  height: 340px;
   width: 250px;
-  height: 305px;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -203,12 +211,12 @@
   background-color: white;
   box-shadow: 0px 0px 3px black;
   border-radius: 15px;
-  width: 200px;
-  margin-top: 18px;
-  margin-left: 10px;
-  margin-right: 10px;
-  overflow: scroll;
   height: 340px;
+  width: 250px;
+  /* margin-top: 18px; */
+  /* margin-left: 10px; */
+  /* margin-right: 10px; */
+  overflow: scroll;
 }
 
 .done {
@@ -216,12 +224,12 @@
   background-color: white;
   box-shadow: 0px 0px 3px black;
   border-radius: 15px;
-  width: 200px;
-  margin-left: 10px;
-  margin-top: 18px;
+  height: 340px;
+  width: 250px;
+  /* margin-left: 10px; */
+  /* margin-top: 18px; */
   /* margin-right: 10px; */
   overflow: scroll;
-  height: 340px;
 
 }
 .todo-lists {

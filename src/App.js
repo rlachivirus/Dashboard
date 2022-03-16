@@ -24,31 +24,36 @@ function Weather() {
 
   return (
     <div className='weather'>
-      {weather.forecast.forecastday.map((weath) => {
-
-        let temperature = degreeType === 'F' ? (
-          <span className='forecast-temp'>{`${weath.day.mintemp_f}°F / ${weath.day.maxtemp_f}°F`}</span>
-        ) : (
-          <span className='forecast-temp'>{`${weath.day.mintemp_c}°C / ${weath.day.maxtemp_c}°C`}</span>
-        )
-
-        let splitDate = weath.date.split('-');
-        let currMonth = splitDate[1][0] === '0' ? splitDate[1][1] : splitDate[1];
-        let weatherDates = currMonth + '/' + splitDate[2] + '/' + splitDate[0];
-
-        return (
-          <div key={weath.date} className='forecast'>
-            <span className='forecast-date'>{weatherDates}</span>
-            <img className='forecast-img' src={weath.day.condition.icon} />
-            <span className='forecast-text'>{weath.day.condition.text}</span>
-            {/* <span className='forecast-temp'>{`${weath.day.mintemp_f}°F / ${weath.day.maxtemp_f}°F`}</span> */}
-            {temperature}
-          </div>
-          )
-        })}
-      <button className='degreeType' onClick={() => changeDegree()}>{degreeType === 'F' ? '°C' : '°F'}</button>
+      <img className='forecast-img' src={weather.current.condition.icon} />
     </div>
   )
+  // return (
+  //   <div className='weather'>
+  //     {weather.forecast.forecastday.map((weath) => {
+  
+  //       let temperature = degreeType === 'F' ? (
+  //         <span className='forecast-temp'>{`${weath.day.mintemp_f}°F / ${weath.day.maxtemp_f}°F`}</span>
+  //       ) : (
+  //         <span className='forecast-temp'>{`${weath.day.mintemp_c}°C / ${weath.day.maxtemp_c}°C`}</span>
+  //       )
+
+  //       let splitDate = weath.date.split('-');
+  //       let currMonth = splitDate[1][0] === '0' ? splitDate[1][1] : splitDate[1];
+  //       let weatherDates = currMonth + '/' + splitDate[2] + '/' + splitDate[0];
+
+  //       return (
+  //         <div key={weath.date} className='forecast'>
+  //           <span className='forecast-date'>{weatherDates}</span>
+  //           <img className='forecast-img' src={weath.day.condition.icon} />
+  //           <span className='forecast-text'>{weath.day.condition.text}</span>
+  //           {/* <span className='forecast-temp'>{`${weath.day.mintemp_f}°F / ${weath.day.maxtemp_f}°F`}</span> */}
+  //           {temperature}
+  //         </div>
+  //         )
+  //       })}
+  //     <button className='degreeType' onClick={() => changeDegree()}>{degreeType === 'F' ? '°C' : '°F'}</button>
+  //   </div>
+  // )
 }
 
 function TodoForm(props) {
@@ -362,7 +367,14 @@ function App() {
         </div>
       </div>
 
-      <Weather />
+      <div className='main-body'>
+        <Weather />
+        <Calculator />
+        <TodoList lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
+        <TodoDone done={done} />
+      </div>
+
+      {/* <Weather />
 
       <div className='todo-structure'>
         <div>
@@ -381,7 +393,7 @@ function App() {
         </div>
       </div>
 
-      <p className='copyRight'>AK © 2022</p>
+      <p className='copyRight'>AK © 2022</p> */}
     </div>
   );
 }
