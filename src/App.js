@@ -352,24 +352,32 @@ function App() {
     <div className='entire-structure'>
       <div className='header'>
         <HelloNewYork />
-        <Switch uncheckedIcon='' checkedIcon='' />
-        <DateAndTime />
+
+        <div className='header-right'>
+          <Switch uncheckedIcon='' checkedIcon='' />
+          <DateAndTime />
+        </div>
       </div>
+
       <Weather />
+
       <div className='todo-structure'>
         <div>
           <TodoForm addTodo={addTodo}/>
           <Calculator />
         </div>
+
         <div>
           <label>Todo</label>
           <TodoList lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown}/>
         </div>
+
         <div>
           <label>Done</label>
           <TodoDone done={done}/>
         </div>
       </div>
+
       <p className='copyRight'>AK © 2022</p>
     </div>
   );
