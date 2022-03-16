@@ -354,7 +354,7 @@ function App() {
         <HelloNewYork />
 
         <div className='header-right'>
-          <Switch uncheckedIcon='' checkedIcon='' />
+          <Switch uncheckedIcon='' checkedIcon='' offColor='#000' onColor='#ffffff' offHandleColor='#ffffff' onHandleColor='#000' handleDiameter={22} width={55} />
           <DateAndTime />
         </div>
       </div>
