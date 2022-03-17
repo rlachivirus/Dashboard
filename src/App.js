@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios'
 import Switch from 'react-switch'
 
-function Weather() {
+function Weather(props) {
   const [ weather, setWeather ] = useState(null);
   const [ degreeType, setDegreeType ] = useState('F')
 
@@ -23,13 +23,13 @@ function Weather() {
   let d = new Date();
   let dayNum = d.getDay();
 
-  if ((!weather)) return <div className='loadingSign'>Loading...</div>;
+  if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
 
   return (
-    <div className='weather'>
-      <p className='forecast-weekday'>{day[dayNum]} • NEW YORK</p>
-      <p className='forecast-temperature'>{weather.current.temp_f}°F</p>
-      <p className='forecast-condition'>{weather.current.condition.text}</p>
+    <div className={props.checkedStatus ? 'weather-dark' : 'weather'}>
+      <p className={props.checkedStatus ? 'forecast-weekday-dark' : 'forecast-weekday'}>{day[dayNum]} • NEW YORK</p>
+      <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°F</p>
+      <p className={props.checkedStatus ? 'forecast-condition-dark' : 'forecast-condition'}>{weather.current.condition.text}</p>
       <img className='forecast-image' src={weather.current.condition.icon} />
     </div>
   )
@@ -101,7 +101,7 @@ function TodoList(props) {
   }
 
   return (
-    <div className='todos'>
+    <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
       <ul className='todo-lists'>
         {props.lists.map((list, idx) => {
             return (
@@ -122,7 +122,7 @@ function TodoList(props) {
 
 function TodoDone(props) {
   return (
-    <div className='done'>
+    <div className={props.checkedStatus ? 'done-dark' : 'done'}>
       <ul className='done-lists'>
         {props.done.map((list, idx) => {
 
@@ -137,7 +137,7 @@ function TodoDone(props) {
   )
 }
 
-function Calculator() {
+function Calculator(props) {
 
   const [ firstNum, setFirstNum ] = useState('0');
   const [ secondNum, setSecondNum ] = useState('');
@@ -247,42 +247,42 @@ function Calculator() {
   }
 
   return (
-    <div className='calculator'>
-      <span className='calculator-result'>{ result ? result : secondNum.length === 0 ? firstNum : secondNum }</span>
+    <div className={props.checkedStatus ? 'calculator-dark' : 'calculator'}>
+      <span className={props.checkedStatus ? 'calculator-result-dark' : 'calculator-result'}>{ result ? result : secondNum.length === 0 ? firstNum : secondNum }</span>
       <div className='row'>
-        <span className='icons' onClick={handleSign}>AC</span>
-        <span className='icons' onClick={handleSign}>+/-</span>
-        <span className='icons' onClick={handleSign}>%</span>
-        <span className='icons' onClick={handleSign}>÷</span>
+        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>AC</span>
+        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>+/-</span>
+        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>%</span>
+        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>÷</span>
       </div>
       <div className='row'>
-        <span className='numbers' onClick={handleNumbers}>7</span>
-        <span className='numbers' onClick={handleNumbers}>8</span>
-        <span className='numbers' onClick={handleNumbers}>9</span>
-        <span className='icons' onClick={handleSign}>×</span>
+        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>7</span>
+        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>8</span>
+        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>9</span>
+        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>×</span>
       </div>
       <div className='row'>
-        <span className='numbers' onClick={handleNumbers}>4</span>
-        <span className='numbers' onClick={handleNumbers}>5</span>
-        <span className='numbers' onClick={handleNumbers}>6</span>
-        <span className='icons' onClick={handleSign}>-</span>
+        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>4</span>
+        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>5</span>
+        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>6</span>
+        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>-</span>
       </div>
       <div className='row'>
-        <span className='numbers' onClick={handleNumbers}>1</span>
-        <span className='numbers' onClick={handleNumbers}>2</span>
-        <span className='numbers' onClick={handleNumbers}>3</span>
-        <span className='icons' onClick={handleSign}>+</span>
+        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>1</span>
+        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>2</span>
+        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>3</span>
+        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>+</span>
       </div>
       <div className='row'>
-        <span className='num-zero' onClick={handleNumbers}>0</span>
-        <span className='numbers' onClick={handleNumbers}>.</span>
-        <span className='icons' onClick={handleResult}>=</span>
+        <span className={props.checkedStatus ? 'num-zero-dark' : 'num-zero'} onClick={handleNumbers}>0</span>
+        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>.</span>
+        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleResult}>=</span>
       </div>
     </div>
   )
 }
 
-function HelloNewYork() {
+function HelloNewYork(props) {
   const initialWord = 'New York!';
 
   const [ word, setWord ] = useState(initialWord);
@@ -311,7 +311,7 @@ function HelloNewYork() {
   return (
     // <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
     <>
-      <p className='header-title'>LEAVE <br/> YOUR DAY <br/> TO ME</p>
+      <p className={props.checkedStatus ? 'header-title-dark' : 'header-title'}>LEAVE <br/> YOUR DAY <br/> TO ME</p>
     </>
   ) 
 }
@@ -368,12 +368,12 @@ function App() {
   }
 
   return (
-    <div className='entire-screen'>
+    <div className={checked ? 'entire-screen-dark' : 'entire-screen'}>
       <div className='entire-structure'>
         <div className='header'>
-          <HelloNewYork />
+          <HelloNewYork checkedStatus={checked} />
 
-          <div className='header-right'>
+          <div className={checked ? 'header-right-dark' : 'header-right'}>
             <Switch
               onChange={handleChange}
               checked={checked}
@@ -391,10 +391,10 @@ function App() {
         </div>
 
         <div className='main-body'>
-          <Weather />
-          <Calculator />
-          <TodoList lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
-          <TodoDone done={done} />
+          <Weather checkedStatus={checked} />
+          <Calculator checkedStatus={checked} />
+          <TodoList checkedStatus={checked} lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
+          <TodoDone checkedStatus={checked} done={done} />
         </div>
 
         {/* <Weather />
