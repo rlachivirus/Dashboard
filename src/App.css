@@ -7,7 +7,8 @@
   font-style: normal; 
   font-variant: normal; 
   font-weight: 400; 
-  line-height: 20px;
+  /* line-height: 20px; */
+  /* line-height: 50px; */
 }
 
 .entire-screen {
@@ -35,15 +36,16 @@
 .header-right {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: flex-end;
-  font-size: 25px;
   /* color: white; */
 }
 
 .header-title {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 900;
+  line-height: 50px;
+  margin-bottom: 25px;
   /* color: white; */
 }
 
@@ -56,6 +58,7 @@
 .timeAndDate {
   margin-bottom: 10px;
   align-self: flex-end;
+  font-size: 25px;
 }
 
 .todo-structure {
@@ -336,15 +339,16 @@ p {
 .header-right-dark {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: flex-end;
-  font-size: 25px;
   color: white;
 }
 
 .header-title-dark {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 900;
+  line-height: 50px;
+  margin-bottom: 25px;
   color: white;
 }
 
