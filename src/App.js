@@ -12,19 +12,25 @@ function Weather() {
       .then((response) => setWeather(response.data))
   }, []);
 
-  const changeDegree = () => {
-    if (degreeType === 'F') {
-      setDegreeType('C');
-    } else {
-      setDegreeType('F');
-    }
-  }
+  // const changeDegree = () => {
+  //   if (degreeType === 'F') {
+  //     setDegreeType('C');
+  //   } else {
+  //     setDegreeType('F');
+  //   }
+  // }
+  let day = { '1': 'MONDAY', '2': 'TUESDAY', '3': 'WEDNESDAY', '4': 'THURSDAY', '5': 'FRIDAY', '6': 'SATURDAY', '0': 'SUNDAY' };
+  let d = new Date();
+  let dayNum = d.getDay();
 
   if ((!weather)) return <div className='loadingSign'>Loading...</div>;
 
   return (
     <div className='weather'>
-      <img className='forecast-img' src={weather.current.condition.icon} />
+      <p className='forecast-weekday'>{day[dayNum]} • NEW YORK</p>
+      <p className='forecast-temperature'>{weather.current.temp_f}°F</p>
+      <p className='forecast-condition'>{weather.current.condition.text}</p>
+      <img className='forecast-image' src={weather.current.condition.icon} />
     </div>
   )
   // return (
