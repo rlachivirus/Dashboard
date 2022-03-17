@@ -1,7 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useDrag } from 'react-dnd';
 import './App.css';
 import axios from 'axios'
 import Switch from 'react-switch'
+
+function Box() {
+  const [ { isDragging }, drag, dragPreview ] = useDrag(() => ({
+    type: 'BOX',
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging()
+    })
+  }))
+
+  return (
+    <div ref={dragPreview} style={{ opacity: isDragging ? 0.5 : 1 }}>
+      <div role='Handle' ref={drag}></div>
+    </div>
+  )
+}
+
+
 
 function Weather(props) {
   const [ weather, setWeather ] = useState(null);
