@@ -377,8 +377,8 @@ function App() {
             <Switch
               onChange={handleChange}
               checked={checked}
-              uncheckedIcon='' 
-              checkedIcon='' 
+              uncheckedIcon={false}
+              checkedIcon={false}
               offColor='#000' 
               onColor='#ffffff' 
               offHandleColor='#ffffff' 
