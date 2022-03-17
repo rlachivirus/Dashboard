@@ -49,6 +49,10 @@
   /* color: white; */
 }
 
+.header-title-span {
+  font-size: 50px;
+}
+
 .main-body {
   display: flex;
   flex-direction: row;
@@ -349,6 +353,11 @@ p {
   font-weight: 900;
   line-height: 50px;
   margin-bottom: 25px;
+  color: white;
+}
+
+.header-title-span-dark {
+  font-size: 50px;
   color: white;
 }
 

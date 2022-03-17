@@ -311,7 +311,7 @@ function HelloNewYork(props) {
   return (
     // <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
     <>
-      <p className={props.checkedStatus ? 'header-title-dark' : 'header-title'}>LEAVE <br/> YOUR DAY <br/> TO ME</p>
+      <p className={props.checkedStatus ? 'header-title-dark' : 'header-title'}>LEAVE <br /> YOUR DAY <br /> <span className={props.checkedStatus ? 'header-title-span-dark' : 'header-title-span'}>TO ME</span></p>
     </>
   ) 
 }
