@@ -18,7 +18,7 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  /* background-color: black; */
+  transition: 0.5s ease;
 }
 
 /* .entire-structure {
@@ -338,6 +338,7 @@ p {
   height: 100%;
   width: 100%;
   background-color: black;
+  transition: 0.5s ease;
 }
 
 .header-right-dark {
