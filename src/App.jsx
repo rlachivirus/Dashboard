@@ -1,24 +1,60 @@
 import React, { useState, useEffect } from 'react';
-import { useDrag } from 'react-dnd';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './App.css';
 import axios from 'axios'
 import Switch from 'react-switch'
+import initialData from './initial-data';
 
-function Box() {
-  const [ { isDragging }, drag, dragPreview ] = useDrag(() => ({
-    type: 'BOX',
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging()
-    })
-  }))
-
+function Column(props) {
   return (
-    <div ref={dragPreview} style={{ opacity: isDragging ? 0.5 : 1 }}>
-      <div role='Handle' ref={drag}></div>
+    <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
+      <p>{props.column.title}</p>
+      <Droppable droppableId={props.column.id}>
+        {provided => (
+          <ul
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {props.tasks.map((task, index) => (
+              <Draggable key={task.id} draggableId={task.id} index={index}>
+                {(provided) => (
+                  <p 
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    ref={provided.innerRef}
+                    className='todo-memo' 
+                  >
+                    {task.content}
+                  </p>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </ul>
+        )}
+      </Droppable>
     </div>
   )
 }
 
+function TodoList() {
+  const [ iniData, setIniData ] = useState(initialData);
+
+  const onDragEnd = (result) => {
+
+  }
+
+  return (
+    <DragDropContext onDragEnd={onDragEnd}>
+      {iniData.columnOrder.map(columnId => {
+        const column = iniData.columns[columnId];
+        const tasks = column.taskIds.map(taskId => iniData.tasks[taskId]);
+
+        return <Column key={column.id} column={column} tasks={tasks} />
+      })}
+    </DragDropContext>
+  )
+}
 
 
 function Weather(props) {
@@ -104,56 +140,58 @@ function TodoForm(props) {
   )
 }
 
-function TodoList(props) {
+// function TodoList(props) {
 
-  const sendToDone = (idx) => {
-    props.done(idx);
-  }
+//   const sendToDone = (idx) => {
+//     props.done(idx);
+//   }
 
-  const priorityUp = (idx) => {
-    props.moveUp(idx);
-  }
+//   const priorityUp = (idx) => {
+//     props.moveUp(idx);
+//   }
 
-  const priorityDown = (idx) => {
-    props.moveDown(idx);
-  }
+//   const priorityDown = (idx) => {
+//     props.moveDown(idx);
+//   }
 
-  return (
-    <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
-      <ul className='todo-lists'>
-        {props.lists.map((list, idx) => {
-            return (
-              <span className='todo-memo' key={`todo-${idx}`}>#{idx + 1}
-                <p>{list}</p>
-                <div className='todo-buttons'>
-                  <button onClick={() => sendToDone(idx)}>></button>
-                  <button onClick={() => priorityUp(idx)}>↑</button>
-                  <button onClick={() => priorityDown(idx)}>↓</button>
-                </div>
-              </span>
-            )
-          })}
-      </ul>
-    </div>
-  )
-}
+//   // let newTodo = Box('new todo')
+//   return (
+//     <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
+//       <ul className='todo-lists'>
+//         {/* {newTodo} */}
+//         {props.lists.map((list, idx) => {
+//             return (
+//               <span className='todo-memo' key={`todo-${idx}`}>#{idx + 1}
+//                 <p>{list}</p>
+//                 <div className='todo-buttons'>
+//                   <button onClick={() => sendToDone(idx)}>></button>
+//                   <button onClick={() => priorityUp(idx)}>↑</button>
+//                   <button onClick={() => priorityDown(idx)}>↓</button>
+//                 </div>
+//               </span>
+//             )
+//           })}
+//       </ul>
+//     </div>
+//   )
+// }
 
-function TodoDone(props) {
-  return (
-    <div className={props.checkedStatus ? 'done-dark' : 'done'}>
-      <ul className='done-lists'>
-        {props.done.map((list, idx) => {
+// function TodoDone(props) {
+//   return (
+//     <div className={props.checkedStatus ? 'done-dark' : 'done'}>
+//       <ul className='done-lists'>
+//         {props.done.map((list, idx) => {
 
-          return (
-            <span className='done-memo' key={`todo-${idx}`}>
-              <p>{list}</p>
-            </span>
-          )
-        })}
-      </ul>
-    </div>
-  )
-}
+//           return (
+//             <span className='done-memo' key={`todo-${idx}`}>
+//               <p>{list}</p>
+//             </span>
+//           )
+//         })}
+//       </ul>
+//     </div>
+//   )
+// }
 
 function Calculator(props) {
 
@@ -412,7 +450,7 @@ function App() {
           <Weather checkedStatus={checked} />
           <Calculator checkedStatus={checked} />
           <TodoList checkedStatus={checked} lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
-          <TodoDone checkedStatus={checked} done={done} />
+          {/* <TodoDone checkedStatus={checked} done={done} /> */}
         </div>
 
         {/* <Weather />
