@@ -2,6 +2,17 @@
 
 * {
   font-family: 'Catamaran';
+  /* background-color: black; */
+}
+
+.entire-screen {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /* background-color: black; */
 }
 
 .entire-structure {
@@ -10,12 +21,15 @@
   flex-direction: column;
   /* justify-content: center; */
   /* align-items: center; */
-  top: 9%;
-  left: 13%;
+  /* top: 9%;
+  left: 13%; */
+  /* height: 100%;
+  width: 100%; */
+  /* background-color: black; */
   /* padding: 5%; */
   /* height: 650px; */
   /* width: 800px; */
-  background-color: hsl(0, 0%, 100%);
+  /* background-color: hsl(0, 0%, 100%); */
   /* border-radius: 15px; */
   /* border: solid 2px darkgray; */
 }

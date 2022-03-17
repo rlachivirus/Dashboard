@@ -368,54 +368,56 @@ function App() {
   }
 
   return (
-    <div className='entire-structure'>
-      <div className='header'>
-        <HelloNewYork />
+    <div className='entire-screen'>
+      <div className='entire-structure'>
+        <div className='header'>
+          <HelloNewYork />
 
-        <div className='header-right'>
-          <Switch
-            onChange={handleChange}
-            checked={checked}
-            uncheckedIcon='' 
-            checkedIcon='' 
-            offColor='#000' 
-            onColor='#ffffff' 
-            offHandleColor='#ffffff' 
-            onHandleColor='#000' 
-            handleDiameter={22} 
-            width={55} 
-          />
-          <DateAndTime />
+          <div className='header-right'>
+            <Switch
+              onChange={handleChange}
+              checked={checked}
+              uncheckedIcon='' 
+              checkedIcon='' 
+              offColor='#000' 
+              onColor='#ffffff' 
+              offHandleColor='#ffffff' 
+              onHandleColor='#000' 
+              handleDiameter={22} 
+              width={55} 
+            />
+            <DateAndTime />
+          </div>
         </div>
-      </div>
 
-      <div className='main-body'>
-        <Weather />
-        <Calculator />
-        <TodoList lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
-        <TodoDone done={done} />
-      </div>
-
-      {/* <Weather />
-
-      <div className='todo-structure'>
-        <div>
-          <TodoForm addTodo={addTodo}/>
+        <div className='main-body'>
+          <Weather />
           <Calculator />
+          <TodoList lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
+          <TodoDone done={done} />
         </div>
 
-        <div>
-          <label>Todo</label>
-          <TodoList lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown}/>
+        {/* <Weather />
+
+        <div className='todo-structure'>
+          <div>
+            <TodoForm addTodo={addTodo}/>
+            <Calculator />
+          </div>
+
+          <div>
+            <label>Todo</label>
+            <TodoList lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown}/>
+          </div>
+
+          <div>
+            <label>Done</label>
+            <TodoDone done={done}/>
+          </div>
         </div>
 
-        <div>
-          <label>Done</label>
-          <TodoDone done={done}/>
-        </div>
+        <p className='copyRight'>AK © 2022</p> */}
       </div>
-
-      <p className='copyRight'>AK © 2022</p> */}
     </div>
   );
 }
