@@ -337,6 +337,7 @@ function App() {
 
   const [ lists, setLists ] = useState(todoLists);
   const [ done, setDone ] = useState(doneLists);
+  const [ checked, setChecked ] = useState(false)
 
   const moveUp = (idx) => {
     if (idx - 1 >= 0) {
@@ -362,13 +363,28 @@ function App() {
     setLists([...lists, todo]);
   }
 
+  const handleChange = (checked) => {
+    setChecked(checked)
+  }
+
   return (
     <div className='entire-structure'>
       <div className='header'>
         <HelloNewYork />
 
         <div className='header-right'>
-          <Switch uncheckedIcon='' checkedIcon='' offColor='#000' onColor='#ffffff' offHandleColor='#ffffff' onHandleColor='#000' handleDiameter={22} width={55} />
+          <Switch
+            onChange={handleChange}
+            checked={checked}
+            uncheckedIcon='' 
+            checkedIcon='' 
+            offColor='#000' 
+            onColor='#ffffff' 
+            offHandleColor='#ffffff' 
+            onHandleColor='#000' 
+            handleDiameter={22} 
+            width={55} 
+          />
           <DateAndTime />
         </div>
       </div>
