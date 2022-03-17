@@ -29,7 +29,7 @@ function Weather(props) {
     <div className={props.checkedStatus ? 'weather-dark' : 'weather'}>
       <p className={props.checkedStatus ? 'forecast-weekday-dark' : 'forecast-weekday'}>{day[dayNum]} • NEW YORK</p>
       <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°F</p>
-      <p className={props.checkedStatus ? 'forecast-condition-dark' : 'forecast-condition'}>{weather.current.condition.text}</p>
+      <p className={props.checkedStatus ? 'forecast-condition-dark' : 'forecast-condition'}>{weather.current.condition.text.toUpperCase()}</p>
       <img className='forecast-image' src={weather.current.condition.icon} />
     </div>
   )
