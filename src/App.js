@@ -305,7 +305,7 @@ function HelloNewYork() {
   return (
     // <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
     <>
-      <p>LEAVE <br/> YOUR DAY <br/> TO ME</p>
+      <p className='header-title'>LEAVE <br/> YOUR DAY <br/> TO ME</p>
     </>
   ) 
 }
