@@ -1,6 +1,6 @@
+import './App.css';
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import './App.css';
 import Switch from 'react-switch'
 import initialData from './initial-data';
 import Calculator from './components/Calculator';

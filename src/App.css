@@ -132,12 +132,34 @@
   /* color: white; */
 }
 
+.temperature-row {
+  display: flex;
+  flex-direction: row;
+}
+
 .forecast-temperature {
   font-size: 55px;
   font-weight: bold;
   margin: 0px;
   height: 60px;
   /* color: white; */
+}
+
+.degree-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dType {
+  font-size: 25px;
+  margin: 0px;
+  /* font-weight: bold; */
+}
+.dType:first-child {
+  position: relative;
+  margin-top: 3px;
+  left: 3px;
 }
 
 .forecast-condition {

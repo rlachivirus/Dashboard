@@ -17,7 +17,7 @@ function Weather(props) {
     //     setDegreeType('F');
     //   }
     // }
-    
+
     let day = { '1': 'MONDAY', '2': 'TUESDAY', '3': 'WEDNESDAY', '4': 'THURSDAY', '5': 'FRIDAY', '6': 'SATURDAY', '0': 'SUNDAY' };
     let d = new Date();
     let dayNum = d.getDay();
@@ -27,7 +27,13 @@ function Weather(props) {
     return (
         <div className={props.checkedStatus ? 'weather-dark' : 'weather'}>
             <p className={props.checkedStatus ? 'forecast-weekday-dark' : 'forecast-weekday'}>{day[dayNum]} • NEW YORK</p>
-            <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°F</p>
+            <div className='temperature-row'>
+                <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°</p>
+                <div className='degree-type'>
+                    <p className='dType'>F</p>
+                    <p className='dType'>C</p>
+                </div>
+            </div>
             <p className={props.checkedStatus ? 'forecast-condition-dark' : 'forecast-condition'}>{weather.current.condition.text.toUpperCase()}</p>
             <img className='forecast-image' src={weather.current.condition.icon} />
         </div>
