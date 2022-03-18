@@ -5,26 +5,6 @@ import axios from 'axios'
 import Switch from 'react-switch'
 import initialData from './initial-data';
 
-// const initialData = {
-//   tasks: {
-//     // 'task-1': { id: 'task-1', content: 'Take out the garbage1' },
-//     // 'task-2': { id: 'task-2', content: 'Take out the garbage2' },
-//   },
-//   columns: {
-//     'column-1': {
-//       id: 'column-1',
-//       title: 'To do',
-//       taskIds: [],
-//     },
-//     'column-2': {
-//       id: 'column-2',
-//       title: 'Done',
-//       taskIds: [],
-//     },
-//   },
-//   columnOrder: ['column-1', 'column-2'],
-// }
-
 function Column(props) {
 
   return (
@@ -39,14 +19,17 @@ function Column(props) {
             {props.tasks.map((task, index) => (
               <Draggable key={task.id} draggableId={task.id} index={index}>
                 {(provided) => (
-                  <p 
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    ref={provided.innerRef}
-                    className='todo-memo' 
-                  >
-                    {task.content}
-                  </p>
+                  <>
+                    <p 
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      ref={provided.innerRef}
+                      className='todo-memo' 
+                    >
+                      <span>{props.column.title === 'To do' ? index + 1 : null}</span><br />
+                      {task.content}
+                    </p>
+                  </>
                 )}
               </Draggable>
             ))}
