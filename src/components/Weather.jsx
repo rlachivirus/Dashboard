@@ -30,7 +30,7 @@ function Weather(props) {
             <div className='temperature-row'>
                 <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°</p>
                 <div className='degree-type'>
-                    <p className='dType'>F</p>
+                    <p style={{fontWeight: 'bold'}} className='dType'>F</p>
                     <p className='dType'>C</p>
                 </div>
             </div>
