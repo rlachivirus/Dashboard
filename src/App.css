@@ -90,8 +90,8 @@
   /* border: 4px solid white; */
 }
 
-.forecast-imgage {
-  width: 70px;
+.forecast-image {
+  width: 100px;
   height: auto;
 }
 
@@ -228,6 +228,28 @@
   width: 250px;
   overflow: scroll;
   /* border: 4px solid white; */
+}
+
+.column-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 45px;
+}
+
+.empty-placeholder {
+  font-size: 30px;
+  width: 18.52px;
+}
+
+.column-form {
+  font-size: 30px;
+  left: 30%;
+  width: 18.52px;
+}
+
+.column-title {
+  font-size: 25px;
 }
 
 .done {

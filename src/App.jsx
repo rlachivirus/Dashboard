@@ -9,8 +9,11 @@ function Column(props) {
 
   return (
     <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
-      <p>{props.column.title}</p>
-      <TodoForm title={props.column.title} iniData={props.iniData} addTodo={props.addTodo} />
+      <div className='column-header'>
+        <div className='empty-placeholder'> </div>
+        <p className='column-title'>{props.column.title}</p>
+        <TodoForm title={props.column.title} iniData={props.iniData} addTodo={props.addTodo} />
+      </div>
       <Droppable droppableId={props.column.id}>
         {provided => (
           <ul
@@ -210,7 +213,7 @@ function TodoForm(props) {
   }
 
   let showModal = modal === false ? (
-    <div onClick={() => handleModal(true)}>{props.title === 'To do' ? '+' : null}</div>
+    <div className='column-form' onClick={() => handleModal(true)}>{props.title === 'To do' ? '+' : null}</div>
   ) : (
     // <div className='modal-background' onClick={() => handleModal(false)}>
       <form className='input-form' onSubmit={handleSubmit}>
