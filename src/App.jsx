@@ -5,7 +5,28 @@ import axios from 'axios'
 import Switch from 'react-switch'
 import initialData from './initial-data';
 
+// const initialData = {
+//   tasks: {
+//     // 'task-1': { id: 'task-1', content: 'Take out the garbage1' },
+//     // 'task-2': { id: 'task-2', content: 'Take out the garbage2' },
+//   },
+//   columns: {
+//     'column-1': {
+//       id: 'column-1',
+//       title: 'To do',
+//       taskIds: [],
+//     },
+//     'column-2': {
+//       id: 'column-2',
+//       title: 'Done',
+//       taskIds: [],
+//     },
+//   },
+//   columnOrder: ['column-1', 'column-2'],
+// }
+
 function Column(props) {
+
   return (
     <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
       <p>{props.column.title}</p>
@@ -37,8 +58,8 @@ function Column(props) {
   )
 }
 
-function TodoList() {
-  const [ iniData, setIniData ] = useState(initialData);
+function TodoList(props) {
+  const [ iniData, setIniData ] = useState(props.initialData);
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -451,6 +472,8 @@ function DateAndTime() {
 }
 
 function App() {
+  const [ iniData, setIniData ] = useState(initialData)
+
   const todoLists = [];
   const doneLists = []
 
@@ -479,7 +502,12 @@ function App() {
   }
 
   const addTodo = (todo) => {
-    setLists([...lists, todo]);
+    console.log(iniData.tasks)
+    let orderNum = Object.keys(iniData.tasks).length;
+    setIniData(prevState => {
+      prevState.tasks[`task-${orderNum + 1}`] = { id: `task-${orderNum + 1}`, content: todo }
+    })
+    console.log(iniData)
   }
 
   const handleChange = (checked) => {
@@ -508,11 +536,11 @@ function App() {
             <DateAndTime />
           </div>
         </div>
-
+        <TodoForm initialData={iniData} addTodo={addTodo}/>
         <div className='main-body'>
           <Weather checkedStatus={checked} />
           <Calculator checkedStatus={checked} />
-          <TodoList checkedStatus={checked} lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
+          <TodoList initialData={iniData} checkedStatus={checked} lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
           {/* <TodoDone checkedStatus={checked} done={done} /> */}
         </div>
 
