@@ -59,7 +59,7 @@ function Column(props) {
 }
 
 function TodoList(props) {
-  const [ iniData, setIniData ] = useState(props.initialData);
+  // const [ iniData, setIniData ] = useState(props.initialData);
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -75,8 +75,8 @@ function TodoList(props) {
       return;
     }
 
-    const start = iniData.columns[source.droppableId];
-    const finish = iniData.columns[destination.droppableId];
+    const start = props.iniData.columns[source.droppableId];
+    const finish = props.iniData.columns[destination.droppableId];
 
     if (start === finish) {
       const newTaskIds = Array.from(start.taskIds);
@@ -89,14 +89,14 @@ function TodoList(props) {
       };
   
       const newState = {
-        ...iniData,
+        ...props.iniData,
         columns: {
-          ...iniData.columns,
+          ...props.iniData.columns,
           [newColumn.id]: newColumn,
         }
       }
   
-      setIniData(newState);
+      props.setIniData(newState);
       return;
     }
 
@@ -117,22 +117,22 @@ function TodoList(props) {
     };
 
     const newState = {
-      ...iniData,
+      ...props.iniData,
       columns: {
-        ...iniData.columns,
+        ...props.iniData.columns,
         [newStart.id]: newStart,
         [newFinish.id]: newFinish,
       },
     };
 
-    setIniData(newState);
+    props.setIniData(newState);
   }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      {iniData.columnOrder.map(columnId => {
-        const column = iniData.columns[columnId];
-        const tasks = column.taskIds.map(taskId => iniData.tasks[taskId]);
+      {props.iniData.columnOrder.map(columnId => {
+        const column = props.iniData.columns[columnId];
+        const tasks = column.taskIds.map(taskId => props.iniData.tasks[taskId]);
 
         return <Column key={column.id} column={column} tasks={tasks} />
       })}
@@ -502,13 +502,30 @@ function App() {
   }
 
   const addTodo = (todo) => {
-    console.log(iniData.tasks)
     let orderNum = Object.keys(iniData.tasks).length;
-    setIniData(prevState => {
-      prevState.tasks[`task-${orderNum + 1}`] = { id: `task-${orderNum + 1}`, content: todo }
+    // setIniData((prevState) => ({
+    //   ...prevState,
+    //   tasks: {
+    //     ...prevState.tasks,
+    //     [`task-${orderNum + 1}`]: { id: `task-${orderNum + 1}`, content: todo }
+    //   }
+    // }))
+
+    setIniData({
+      ...iniData,
+      tasks: {
+        ...iniData.tasks,
+        [`task-${orderNum + 1}`]: { id: `task-${orderNum + 1}`, content: todo },
+      },
+      columns: {
+        ...iniData.columns,
+        'column-1': {
+          ...iniData.columns['column-1'],
+          taskIds: [...iniData.columns['column-1'].taskIds, `task-${orderNum + 1}`]
+        }
+      }
     })
-    console.log(iniData)
-  }
+    }
 
   const handleChange = (checked) => {
     setChecked(checked)
@@ -540,7 +557,7 @@ function App() {
         <div className='main-body'>
           <Weather checkedStatus={checked} />
           <Calculator checkedStatus={checked} />
-          <TodoList initialData={iniData} checkedStatus={checked} lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
+          <TodoList iniData={iniData} setIniData={setIniData} checkedStatus={checked} lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
           {/* <TodoDone checkedStatus={checked} done={done} /> */}
         </div>
 
