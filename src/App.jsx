@@ -4,6 +4,8 @@ import './App.css';
 import axios from 'axios'
 import Switch from 'react-switch'
 import initialData from './initial-data';
+import Calculator from './components/Calculator';
+import HeaderTitle from './components/HeaderTitle';
 
 function Column(props) {
 
@@ -280,192 +282,47 @@ function TodoForm(props) {
 //   )
 // }
 
-function Calculator(props) {
+// function HelloNewYork(props) {
+//   const initialWord = 'leave your day to me';
 
-  const [ firstNum, setFirstNum ] = useState('0');
-  const [ secondNum, setSecondNum ] = useState('');
-  const [ result, setResult ] = useState(null);
-  const [ sign, setSign ] = useState('');
+//   const [ word, setWord ] = useState(initialWord);
 
-  const handleNumbers = (e) => {
-    setResult(null)
-    if (sign === '') {
-      if (firstNum === '0') {
-        if (e.target.innerText === '.' && !firstNum.includes('.')) {
-          setFirstNum('0.');
-        } else {
-          setFirstNum(e.target.innerText);
-        }
-      } else {
-        if (e.target.innerText === '.' && firstNum.includes('.')) {
-        } else {
-          if (firstNum.length < 8) {
-            setFirstNum(prevState => prevState + e.target.innerText);
-          }
-        }
-      }
-    } else {
-      if (secondNum.length === 0) {
-        if (e.target.innerText === '.' && !secondNum.includes('.')) {
-          setSecondNum('0.');
-        } else {
-          setSecondNum(e.target.innerText);
-        }
-      } else {
-        if (e.target.innerText === '.' && secondNum.includes('.')) {
-        } else {
-          if (secondNum.length < 8) {
-            setSecondNum(prevState => prevState + e.target.innerText);
-          }
-        }
-      }
-    }
-  }
+//   useEffect(() => {
+//     const changeFont = setInterval(() => {
+//       let title1 = document.getElementById('header-title1');
+//       let title2 = document.getElementById('header-title2');
+//       let title3 = document.getElementById('header-title3');
+//       // console.log(font.style.fontFamily)
+//       if (word === 'leave your day to me') {
+//         title1.innerText = 'LET ME';
+//         title2.innerText = 'HANDLE';
+//         title3.innerText = 'YOUR DAY';
+//         setWord('let me handle your day');
+//       } else if (word === 'let me handle your day') {
+//         title1.innerText = 'I WILL';
+//         title2.innerText = 'TAKE CARE OF';
+//         setWord('i will take care of your day');
+//       } else {
+//         title1.innerText = 'LEAVE';
+//         title2.innerText = 'YOUR DAY';
+//         title3.innerText = 'TO ME';
+//         setWord('leave your day to me');
+//       }
+//     }, 10000)
 
-  const handleSign = (e) => {
-    if (e.target.innerText === 'AC') {
-      if (result) {
-        setResult(null)
-      } else if (secondNum) {
-        setSecondNum('');
-      } else if (firstNum) {
-        setFirstNum('0')
-        setSign('');
-      }
-    } else if (e.target.innerText === '+/-') {
-      if (result) {
-        setResult(prevState => -(prevState));
-      } else if (secondNum) {
-        setSecondNum(prevState => -(prevState));
-      } else if (firstNum) {
-        setFirstNum(prevState => -(prevState));
-      }
-    } else if (e.target.innerText === '%') {
-      if (result) {
-        setResult(prevState => prevState / 100);
-      } else if (secondNum) {
-        setSecondNum(prevState => prevState / 100);
-      } else if (firstNum) {
-        setFirstNum(prevState => prevState / 100);
-      }
-    } else {
-      setSign(e.target.innerText)
-    }
-  }
+//     return () => clearInterval(changeFont);
+//   })
 
-  const handleResult = () => {
-    let num = '';
-
-    if (firstNum && secondNum && sign) {
-      if (sign === '+') {
-        // setResult(Number(firstNum) + Number(secondNum));
-        num = Number(firstNum) + Number(secondNum);
-      } else if (sign === '-') {
-        // setResult(Number(firstNum) - Number(secondNum));
-        num = Number(firstNum) - Number(secondNum);
-      } else if (sign === '×') {
-        // setResult(Number(firstNum) * Number(secondNum));
-        num = Number(firstNum) * Number(secondNum);
-      } else if (sign === '÷') {
-        if (secondNum === '0') {
-            setResult('Error')
-          } else {
-          // setResult(Number(firstNum) / Number(secondNum));
-          num = Number(firstNum) / Number(secondNum);
-        }
-      }
-    }
-
-    let numInStr = String(num)
-
-    if (numInStr.length > 8) {
-      setResult('Broken..')
-    } else {
-      setResult(numInStr);
-    }
-
-    setFirstNum('0');
-    setSecondNum('');
-    setSign('');
-  }
-
-  return (
-    <div className={props.checkedStatus ? 'calculator-dark' : 'calculator'}>
-      <span className={props.checkedStatus ? 'calculator-result-dark' : 'calculator-result'}>{ result ? result : secondNum.length === 0 ? firstNum : secondNum }</span>
-      <div className='row'>
-        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>AC</span>
-        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>+/-</span>
-        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>%</span>
-        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>÷</span>
-      </div>
-      <div className='row'>
-        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>7</span>
-        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>8</span>
-        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>9</span>
-        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>×</span>
-      </div>
-      <div className='row'>
-        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>4</span>
-        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>5</span>
-        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>6</span>
-        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>-</span>
-      </div>
-      <div className='row'>
-        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>1</span>
-        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>2</span>
-        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>3</span>
-        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>+</span>
-      </div>
-      <div className='row'>
-        <span className={props.checkedStatus ? 'num-zero-dark' : 'num-zero'} onClick={handleNumbers}>0</span>
-        <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>.</span>
-        <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleResult}>=</span>
-      </div>
-    </div>
-  )
-}
-
-function HelloNewYork(props) {
-  const initialWord = 'leave your day to me';
-
-  const [ word, setWord ] = useState(initialWord);
-
-  useEffect(() => {
-    const changeFont = setInterval(() => {
-      let title1 = document.getElementById('header-title1');
-      let title2 = document.getElementById('header-title2');
-      let title3 = document.getElementById('header-title3');
-      // console.log(font.style.fontFamily)
-      if (word === 'leave your day to me') {
-        title1.innerText = 'LET ME';
-        title2.innerText = 'HANDLE';
-        title3.innerText = 'YOUR DAY';
-        setWord('let me handle your day');
-      } else if (word === 'let me handle your day') {
-        title1.innerText = 'I WILL';
-        title2.innerText = 'TAKE CARE OF';
-        setWord('i will take care of your day');
-      } else {
-        title1.innerText = 'LEAVE';
-        title2.innerText = 'YOUR DAY';
-        title3.innerText = 'TO ME';
-        setWord('leave your day to me');
-      }
-    }, 10000)
-
-    return () => clearInterval(changeFont);
-  })
-
-  return (
-    // <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
-    <div className={props.checkedStatus ? 'header-left-dark' : 'header-left'}>
-      {/* <p className={props.checkedStatus ? 'header-title-dark' : 'header-title'}>LEAVE <br /> YOUR DAY <br /> <span className={props.checkedStatus ? 'header-title-span-dark' : 'header-title-span'}>TO ME</span></p> */}
-      <p id='header-title1'>LEAVE</p>
-      <p id='header-title2'>YOUR DAY</p>
-      <p id='header-title3'>TO ME</p>
-    </div>
-  ) 
-}
+//   return (
+//     // <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
+//     <div className={props.checkedStatus ? 'header-left-dark' : 'header-left'}>
+//       {/* <p className={props.checkedStatus ? 'header-title-dark' : 'header-title'}>LEAVE <br /> YOUR DAY <br /> <span className={props.checkedStatus ? 'header-title-span-dark' : 'header-title-span'}>TO ME</span></p> */}
+//       <p id='header-title1'>LEAVE</p>
+//       <p id='header-title2'>YOUR DAY</p>
+//       <p id='header-title3'>TO ME</p>
+//     </div>
+//   ) 
+// }
 
 function DateAndTime() {
 
@@ -557,7 +414,7 @@ function App() {
     <div className={checked ? 'entire-screen-dark' : 'entire-screen'}>
       <div className='entire-structure'>
         <div className='header'>
-          <HelloNewYork checkedStatus={checked} />
+          <HeaderTitle checkedStatus={checked} />
 
           <div className={checked ? 'header-right-dark' : 'header-right'}>
             <Switch
