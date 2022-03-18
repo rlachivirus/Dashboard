@@ -9,7 +9,7 @@ function Column(props) {
 
   return (
     <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
-      <div className='column-header'>
+      <div className={props.checkedStatus ? 'column-header-dark' : 'column-header'}>
         <div className='empty-placeholder'> </div>
         <p className='column-title'>{props.column.title}</p>
         <TodoForm title={props.column.title} iniData={props.iniData} addTodo={props.addTodo} />
@@ -29,7 +29,7 @@ function Column(props) {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
-                      className='todo-memo' 
+                      className={props.checkedStatus ? 'todo-memo-dark' : 'todo-memo'}
                     >
                       <span>{props.column.title === 'To do' ? index + 1 : null}</span><br />
                       {task.content}
@@ -122,7 +122,7 @@ function TodoList(props) {
         const column = props.iniData.columns[columnId];
         const tasks = column.taskIds.map(taskId => props.iniData.tasks[taskId]);
 
-        return <Column key={column.id} column={column} tasks={tasks} iniData={props.iniData} addTodo={props.addTodo} />
+        return <Column key={column.id} column={column} tasks={tasks} iniData={props.iniData} addTodo={props.addTodo} checkedStatus={props.checkedStatus}/>
       })}
     </DragDropContext>
   )
