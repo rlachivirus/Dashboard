@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './App.css';
-import axios from 'axios'
 import Switch from 'react-switch'
 import initialData from './initial-data';
 import Calculator from './components/Calculator';
 import HeaderTitle from './components/HeaderTitle';
 import DateAndTime from './components/DateAndTime';
+import Weather from './components/Weather';
 
 function Column(props) {
 
@@ -132,64 +132,37 @@ function TodoList(props) {
 }
 
 
-function Weather(props) {
-  const [ weather, setWeather ] = useState(null);
-  const [ degreeType, setDegreeType ] = useState('F')
+// function Weather(props) {
+//   const [ weather, setWeather ] = useState(null);
+//   const [ degreeType, setDegreeType ] = useState('F')
 
-  useEffect(() => {
-    axios.get('http://api.weatherapi.com/v1/forecast.json?key=3d83602b387a49c39ba33428222102&q=New York&days=7&aqi=no&alerts=no')
-      .then((response) => setWeather(response.data))
-  }, [weather]);
+//   useEffect(() => {
+//     axios.get('http://api.weatherapi.com/v1/forecast.json?key=3d83602b387a49c39ba33428222102&q=New York&days=7&aqi=no&alerts=no')
+//       .then((response) => setWeather(response.data))
+//   }, [weather]);
 
-  // const changeDegree = () => {
-  //   if (degreeType === 'F') {
-  //     setDegreeType('C');
-  //   } else {
-  //     setDegreeType('F');
-  //   }
-  // }
-  let day = { '1': 'MONDAY', '2': 'TUESDAY', '3': 'WEDNESDAY', '4': 'THURSDAY', '5': 'FRIDAY', '6': 'SATURDAY', '0': 'SUNDAY' };
-  let d = new Date();
-  let dayNum = d.getDay();
+//   // const changeDegree = () => {
+//   //   if (degreeType === 'F') {
+//   //     setDegreeType('C');
+//   //   } else {
+//   //     setDegreeType('F');
+//   //   }
+//   // }
+//   let day = { '1': 'MONDAY', '2': 'TUESDAY', '3': 'WEDNESDAY', '4': 'THURSDAY', '5': 'FRIDAY', '6': 'SATURDAY', '0': 'SUNDAY' };
+//   let d = new Date();
+//   let dayNum = d.getDay();
 
-  if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
+//   if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
 
-  return (
-    <div className={props.checkedStatus ? 'weather-dark' : 'weather'}>
-      <p className={props.checkedStatus ? 'forecast-weekday-dark' : 'forecast-weekday'}>{day[dayNum]} • NEW YORK</p>
-      <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°F</p>
-      <p className={props.checkedStatus ? 'forecast-condition-dark' : 'forecast-condition'}>{weather.current.condition.text.toUpperCase()}</p>
-      <img className='forecast-image' src={weather.current.condition.icon} />
-    </div>
-  )
-  // return (
-  //   <div className='weather'>
-  //     {weather.forecast.forecastday.map((weath) => {
-  
-  //       let temperature = degreeType === 'F' ? (
-  //         <span className='forecast-temp'>{`${weath.day.mintemp_f}°F / ${weath.day.maxtemp_f}°F`}</span>
-  //       ) : (
-  //         <span className='forecast-temp'>{`${weath.day.mintemp_c}°C / ${weath.day.maxtemp_c}°C`}</span>
-  //       )
-
-  //       let splitDate = weath.date.split('-');
-  //       let currMonth = splitDate[1][0] === '0' ? splitDate[1][1] : splitDate[1];
-  //       let weatherDates = currMonth + '/' + splitDate[2] + '/' + splitDate[0];
-
-  //       return (
-  //         <div key={weath.date} className='forecast'>
-  //           <span className='forecast-date'>{weatherDates}</span>
-  //           <img className='forecast-img' src={weath.day.condition.icon} />
-  //           <span className='forecast-text'>{weath.day.condition.text}</span>
-  //           {/* <span className='forecast-temp'>{`${weath.day.mintemp_f}°F / ${weath.day.maxtemp_f}°F`}</span> */}
-  //           {temperature}
-  //         </div>
-  //         )
-  //       })}
-  //     <button className='degreeType' onClick={() => changeDegree()}>{degreeType === 'F' ? '°C' : '°F'}</button>
-  //   </div>
-  // )
-}
+//   return (
+//     <div className={props.checkedStatus ? 'weather-dark' : 'weather'}>
+//       <p className={props.checkedStatus ? 'forecast-weekday-dark' : 'forecast-weekday'}>{day[dayNum]} • NEW YORK</p>
+//       <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°F</p>
+//       <p className={props.checkedStatus ? 'forecast-condition-dark' : 'forecast-condition'}>{weather.current.condition.text.toUpperCase()}</p>
+//       <img className='forecast-image' src={weather.current.condition.icon} />
+//     </div>
+//   )
+// }
 
 function TodoForm(props) {
   const [ todo, setTodo ] = useState('');
