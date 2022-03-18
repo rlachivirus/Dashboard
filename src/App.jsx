@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './App.css';
 import Switch from 'react-switch'
@@ -34,7 +34,7 @@ function Column(props) {
                       ref={provided.innerRef}
                       className={props.checkedStatus ? 'todo-memo-dark' : 'todo-memo'}
                     >
-                      <span>{props.column.title === 'To do' ? index + 1 : null}</span><br />
+                      <span className='todo-memo-priority'>{props.column.title === 'To do' ? `#${index + 1}` : null}</span><br />
                       {task.content}
                     </p>
                   </>
@@ -50,7 +50,6 @@ function Column(props) {
 }
 
 function TodoList(props) {
-  // const [ iniData, setIniData ] = useState(props.initialData);
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -131,39 +130,6 @@ function TodoList(props) {
   )
 }
 
-
-// function Weather(props) {
-//   const [ weather, setWeather ] = useState(null);
-//   const [ degreeType, setDegreeType ] = useState('F')
-
-//   useEffect(() => {
-//     axios.get('http://api.weatherapi.com/v1/forecast.json?key=3d83602b387a49c39ba33428222102&q=New York&days=7&aqi=no&alerts=no')
-//       .then((response) => setWeather(response.data))
-//   }, [weather]);
-
-//   // const changeDegree = () => {
-//   //   if (degreeType === 'F') {
-//   //     setDegreeType('C');
-//   //   } else {
-//   //     setDegreeType('F');
-//   //   }
-//   // }
-//   let day = { '1': 'MONDAY', '2': 'TUESDAY', '3': 'WEDNESDAY', '4': 'THURSDAY', '5': 'FRIDAY', '6': 'SATURDAY', '0': 'SUNDAY' };
-//   let d = new Date();
-//   let dayNum = d.getDay();
-
-//   if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
-
-//   return (
-//     <div className={props.checkedStatus ? 'weather-dark' : 'weather'}>
-//       <p className={props.checkedStatus ? 'forecast-weekday-dark' : 'forecast-weekday'}>{day[dayNum]} • NEW YORK</p>
-//       <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°F</p>
-//       <p className={props.checkedStatus ? 'forecast-condition-dark' : 'forecast-condition'}>{weather.current.condition.text.toUpperCase()}</p>
-//       <img className='forecast-image' src={weather.current.condition.icon} />
-//     </div>
-//   )
-// }
-
 function TodoForm(props) {
   const [ todo, setTodo ] = useState('');
   const [ modal, setModal ] = useState(false);
@@ -202,6 +168,48 @@ function TodoForm(props) {
 
   return showModal
 }
+
+// function HeaderTitle(props) {
+//   const initialWord = 'leave your day to me';
+
+//   const [word, setWord] = useState(initialWord);
+
+//   useEffect(() => {
+//     const changeFont = setInterval(() => {
+//       let title1 = document.getElementById('header-title1');
+//       let title2 = document.getElementById('header-title2');
+//       let title3 = document.getElementById('header-title3');
+//       // console.log(font.style.fontFamily)
+//       if (word === 'leave your day to me') {
+//         title1.innerText = 'LET ME';
+//         title2.innerText = 'HANDLE';
+//         title3.innerText = 'YOUR DAY';
+//         setWord('let me handle your day');
+//       } else if (word === 'let me handle your day') {
+//         title1.innerText = 'I WILL';
+//         title2.innerText = 'TAKE CARE OF';
+//         setWord('i will take care of your day');
+//       } else {
+//         title1.innerText = 'LEAVE';
+//         title2.innerText = 'YOUR DAY';
+//         title3.innerText = 'TO ME';
+//         setWord('leave your day to me');
+//       }
+//     }, 10000)
+
+//     return () => clearInterval(changeFont);
+//   })
+
+//   return (
+//     // <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
+//     <div className={props.checkedStatus ? 'header-left-dark' : 'header-left'}>
+//       {/* <p className={props.checkedStatus ? 'header-title-dark' : 'header-title'}>LEAVE <br /> YOUR DAY <br /> <span className={props.checkedStatus ? 'header-title-span-dark' : 'header-title-span'}>TO ME</span></p> */}
+//       <p id='header-title1'>LEAVE</p>
+//       <p id='header-title2'>YOUR DAY</p>
+//       <p id='header-title3'>TO ME</p>
+//     </div>
+//   )
+// }
 
 // function TodoList(props) {
 

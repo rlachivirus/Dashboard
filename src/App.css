@@ -316,6 +316,12 @@
   background-color: white;
 }
 
+.todo-memo-priority {
+  position: relative;
+  left: 5px;
+  font-size: 17px;
+}
+
 .todo-buttons {
   position: absolute;
   display: flex;
