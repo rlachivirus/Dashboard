@@ -14,6 +14,7 @@ function Column(props) {
       <Droppable droppableId={props.column.id}>
         {provided => (
           <ul
+            className='todo-lists'
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
@@ -118,7 +119,7 @@ function TodoList(props) {
         const column = props.iniData.columns[columnId];
         const tasks = column.taskIds.map(taskId => props.iniData.tasks[taskId]);
 
-        return <Column key={column.id} column={column} tasks={tasks} iniData={props.iniData} addTodo={props.iniData} />
+        return <Column key={column.id} column={column} tasks={tasks} iniData={props.iniData} addTodo={props.addTodo} />
       })}
     </DragDropContext>
   )
@@ -211,13 +212,13 @@ function TodoForm(props) {
   let showModal = modal === false ? (
     <div onClick={() => handleModal(true)}>{props.title === 'To do' ? '+' : null}</div>
   ) : (
-    <div className='modal-background' onClick={() => handleModal(false)}>
+    // <div className='modal-background' onClick={() => handleModal(false)}>
       <form className='input-form' onSubmit={handleSubmit}>
         <br />
         <input type='text' placeholder='Add New Todo' value={todo} onChange={handleChange} />
         <input type='submit' value='Add' />
       </form>
-    </div>
+    // </div>
   )
 
   return showModal
