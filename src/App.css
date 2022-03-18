@@ -41,17 +41,35 @@
   /* color: white; */
 }
 
-.header-title {
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+#header-title1 {
   font-size: 50px;
   font-weight: 900;
-  line-height: 50px;
-  margin-bottom: 25px;
+  margin: 0px;
   /* color: white; */
 }
 
-.header-title-span {
+#header-title2 {
   font-size: 50px;
+  font-weight: 900;
+  margin: 0px;
+  /* color: white; */
 }
+
+#header-title3 {
+  font-size: 50px;
+  margin: 0px;
+  margin-bottom: 30px;
+  /* color: white; */
+}
+
+/* .header-title-span {
+  font-size: 50px;
+} */
 
 .main-body {
   display: flex;
@@ -248,6 +266,7 @@
   flex-direction: row;
   justify-content: space-around;
   height: 45px;
+  margin-top: 10px
 }
 
 .empty-placeholder {
@@ -277,7 +296,7 @@
 .todo-lists {
   /* display: flex;
   flex-direction: column; */
-  min-height: 100px;
+  min-height: 200px;
 }
 
 .todo-memo {
@@ -539,6 +558,7 @@ p {
   justify-content: space-around;
   height: 45px;
   color: white;
+  margin-top: 10px;
 }
 
 .done-dark {
