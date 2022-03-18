@@ -136,7 +136,7 @@ function Weather(props) {
   useEffect(() => {
     axios.get('http://api.weatherapi.com/v1/forecast.json?key=3d83602b387a49c39ba33428222102&q=New York&days=7&aqi=no&alerts=no')
       .then((response) => setWeather(response.data))
-  }, []);
+  }, [weather]);
 
   // const changeDegree = () => {
   //   if (degreeType === 'F') {
@@ -458,7 +458,7 @@ function HelloNewYork(props) {
 
   return (
     // <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
-    <div className='header-left'>
+    <div className={props.checkedStatus ? 'header-left-dark' : 'header-left'}>
       {/* <p className={props.checkedStatus ? 'header-title-dark' : 'header-title'}>LEAVE <br /> YOUR DAY <br /> <span className={props.checkedStatus ? 'header-title-span-dark' : 'header-title-span'}>TO ME</span></p> */}
       <p id='header-title1'>LEAVE</p>
       <p id='header-title2'>YOUR DAY</p>
