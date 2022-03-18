@@ -282,47 +282,6 @@ function TodoForm(props) {
 //   )
 // }
 
-// function HelloNewYork(props) {
-//   const initialWord = 'leave your day to me';
-
-//   const [ word, setWord ] = useState(initialWord);
-
-//   useEffect(() => {
-//     const changeFont = setInterval(() => {
-//       let title1 = document.getElementById('header-title1');
-//       let title2 = document.getElementById('header-title2');
-//       let title3 = document.getElementById('header-title3');
-//       // console.log(font.style.fontFamily)
-//       if (word === 'leave your day to me') {
-//         title1.innerText = 'LET ME';
-//         title2.innerText = 'HANDLE';
-//         title3.innerText = 'YOUR DAY';
-//         setWord('let me handle your day');
-//       } else if (word === 'let me handle your day') {
-//         title1.innerText = 'I WILL';
-//         title2.innerText = 'TAKE CARE OF';
-//         setWord('i will take care of your day');
-//       } else {
-//         title1.innerText = 'LEAVE';
-//         title2.innerText = 'YOUR DAY';
-//         title3.innerText = 'TO ME';
-//         setWord('leave your day to me');
-//       }
-//     }, 10000)
-
-//     return () => clearInterval(changeFont);
-//   })
-
-//   return (
-//     // <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
-//     <div className={props.checkedStatus ? 'header-left-dark' : 'header-left'}>
-//       {/* <p className={props.checkedStatus ? 'header-title-dark' : 'header-title'}>LEAVE <br /> YOUR DAY <br /> <span className={props.checkedStatus ? 'header-title-span-dark' : 'header-title-span'}>TO ME</span></p> */}
-//       <p id='header-title1'>LEAVE</p>
-//       <p id='header-title2'>YOUR DAY</p>
-//       <p id='header-title3'>TO ME</p>
-//     </div>
-//   ) 
-// }
 
 function DateAndTime() {
 
@@ -352,33 +311,7 @@ function DateAndTime() {
 
 function App() {
   const [ iniData, setIniData ] = useState(initialData)
-
-  const todoLists = [];
-  const doneLists = []
-
-  const [ lists, setLists ] = useState(todoLists);
-  const [ done, setDone ] = useState(doneLists);
   const [ checked, setChecked ] = useState(false)
-
-  const moveUp = (idx) => {
-    if (idx - 1 >= 0) {
-      let idxToMove = lists.splice(idx, 1);
-      lists.splice(idx - 1, 0, idxToMove);
-      setLists([...lists]);
-    }
-  }
-
-  const moveDown = (idx) => {
-    let idxToMove = lists.splice(idx, 1);
-    lists.splice(idx + 1, 0, idxToMove);
-    setLists([...lists]);
-  }
-
-  const todoDone = (idx) => {
-    let newList = lists.splice(idx, 1)
-    setLists([...lists]);
-    setDone([newList, ...done]);
-  }
 
   const addTodo = (todo) => {
     let orderNum = Object.keys(iniData.tasks).length;
@@ -404,7 +337,7 @@ function App() {
         }
       }
     })
-    }
+  }
 
   const handleChange = (checked) => {
     setChecked(checked)
@@ -435,31 +368,10 @@ function App() {
         <div className='main-body'>
           <Weather checkedStatus={checked} />
           <Calculator checkedStatus={checked} />
-          <TodoList addTodo={addTodo} iniData={iniData} setIniData={setIniData} checkedStatus={checked} lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
-          {/* <TodoForm iniData={iniData} addTodo={addTodo}/> */}
-          {/* <TodoDone checkedStatus={checked} done={done} /> */}
+          <TodoList addTodo={addTodo} iniData={iniData} setIniData={setIniData} checkedStatus={checked} />
         </div>
 
-        {/* <Weather />
-
-        <div className='todo-structure'>
-          <div>
-            <TodoForm addTodo={addTodo}/>
-            <Calculator />
-          </div>
-
-          <div>
-            <label>Todo</label>
-            <TodoList lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown}/>
-          </div>
-
-          <div>
-            <label>Done</label>
-            <TodoDone done={done}/>
-          </div>
-        </div>
-
-        <p className='copyRight'>AK © 2022</p> */}
+        {/* <p className='copyRight'>AK © 2022</p> */}
       </div>
     </div>
   );
