@@ -214,59 +214,6 @@ function TodoForm(props) {
 //   )
 // }
 
-// function TodoList(props) {
-
-//   const sendToDone = (idx) => {
-//     props.done(idx);
-//   }
-
-//   const priorityUp = (idx) => {
-//     props.moveUp(idx);
-//   }
-
-//   const priorityDown = (idx) => {
-//     props.moveDown(idx);
-//   }
-
-//   // let newTodo = Box('new todo')
-//   return (
-//     <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
-//       <ul className='todo-lists'>
-//         {/* {newTodo} */}
-//         {props.lists.map((list, idx) => {
-//             return (
-//               <span className='todo-memo' key={`todo-${idx}`}>#{idx + 1}
-//                 <p>{list}</p>
-//                 <div className='todo-buttons'>
-//                   <button onClick={() => sendToDone(idx)}>></button>
-//                   <button onClick={() => priorityUp(idx)}>↑</button>
-//                   <button onClick={() => priorityDown(idx)}>↓</button>
-//                 </div>
-//               </span>
-//             )
-//           })}
-//       </ul>
-//     </div>
-//   )
-// }
-
-// function TodoDone(props) {
-//   return (
-//     <div className={props.checkedStatus ? 'done-dark' : 'done'}>
-//       <ul className='done-lists'>
-//         {props.done.map((list, idx) => {
-
-//           return (
-//             <span className='done-memo' key={`todo-${idx}`}>
-//               <p>{list}</p>
-//             </span>
-//           )
-//         })}
-//       </ul>
-//     </div>
-//   )
-// }
-
 function App() {
   const [ iniData, setIniData ] = useState(initialData)
   const [ checked, setChecked ] = useState(false)
