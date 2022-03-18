@@ -10,6 +10,7 @@ function Column(props) {
   return (
     <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
       <p>{props.column.title}</p>
+      <TodoForm title={props.column.title} iniData={props.iniData} addTodo={props.addTodo} />
       <Droppable droppableId={props.column.id}>
         {provided => (
           <ul
@@ -117,7 +118,7 @@ function TodoList(props) {
         const column = props.iniData.columns[columnId];
         const tasks = column.taskIds.map(taskId => props.iniData.tasks[taskId]);
 
-        return <Column key={column.id} column={column} tasks={tasks} />
+        return <Column key={column.id} column={column} tasks={tasks} iniData={props.iniData} addTodo={props.iniData} />
       })}
     </DragDropContext>
   )
@@ -185,26 +186,41 @@ function Weather(props) {
 
 function TodoForm(props) {
   const [ todo, setTodo ] = useState('');
+  const [ modal, setModal ] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!todo) return;
     props.addTodo(todo);
     setTodo('');
+    setModal(false);
   }
 
   const handleChange = (e) => {
     setTodo(e.target.value);
   }
 
-  return (
-    <form className='input-form' onSubmit={handleSubmit}>
-      {/* <label>Add things to do</label> */}
-      <br/>
-      <input type='text' placeholder='Add New Todo' value={todo} onChange={handleChange}/>
-      <input type='submit' value='Add'/>
-    </form>
+  const handleModal = (mod) => {
+    if (mod) {
+      setModal(true);
+    } else {
+      setModal(false);
+    }
+  }
+
+  let showModal = modal === false ? (
+    <div onClick={() => handleModal(true)}>{props.title === 'To do' ? '+' : null}</div>
+  ) : (
+    <div className='modal-background' onClick={() => handleModal(false)}>
+      <form className='input-form' onSubmit={handleSubmit}>
+        <br />
+        <input type='text' placeholder='Add New Todo' value={todo} onChange={handleChange} />
+        <input type='submit' value='Add' />
+      </form>
+    </div>
   )
+
+  return showModal
 }
 
 // function TodoList(props) {
@@ -536,11 +552,11 @@ function App() {
             <DateAndTime />
           </div>
         </div>
-        <TodoForm initialData={iniData} addTodo={addTodo}/>
         <div className='main-body'>
           <Weather checkedStatus={checked} />
           <Calculator checkedStatus={checked} />
-          <TodoList iniData={iniData} setIniData={setIniData} checkedStatus={checked} lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
+          <TodoList addTodo={addTodo} iniData={iniData} setIniData={setIniData} checkedStatus={checked} lists={lists} done={todoDone} moveUp={moveUp} moveDown={moveDown} />
+          {/* <TodoForm iniData={iniData} addTodo={addTodo}/> */}
           {/* <TodoDone checkedStatus={checked} done={done} /> */}
         </div>
 
