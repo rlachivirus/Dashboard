@@ -471,7 +471,12 @@ function DateAndTime() {
     return () => clearInterval(changeTime);
   })
 
-  return <p className='timeAndDate'>{timeDate.toLocaleDateString()} <br/> {timeDate.toLocaleTimeString()}</p>
+  return (
+    <div className='timeAndDate'>
+      <p className='date'>{timeDate.toLocaleDateString()}</p>
+      <p className='time'>{timeDate.toLocaleTimeString()}</p>
+    </div>
+  )
 }
 
 function App() {
