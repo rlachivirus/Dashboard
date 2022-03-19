@@ -10,13 +10,13 @@ function Weather(props) {
             .then((response) => setWeather(response.data))
     }, []);
 
-    // const changeDegree = () => {
-    //   if (degreeType === 'F') {
-    //     setDegreeType('C');
-    //   } else {
-    //     setDegreeType('F');
-    //   }
-    // }
+    const changeDegree = (dType) => {
+        if (dType !== degreeType) {
+            setDegreeType(dType);
+        }
+    }
+
+    console.log(weather)
 
     let day = { '1': 'MONDAY', '2': 'TUESDAY', '3': 'WEDNESDAY', '4': 'THURSDAY', '5': 'FRIDAY', '6': 'SATURDAY', '0': 'SUNDAY' };
     let d = new Date();
@@ -24,14 +24,21 @@ function Weather(props) {
 
     if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
 
+    let showTemperature = degreeType === 'F' ? (
+        <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°</p>
+    ) : (
+        <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_c}°</p>
+    )
+
     return (
         <div className={props.checkedStatus ? 'weather-dark' : 'weather'}>
             <p className={props.checkedStatus ? 'forecast-weekday-dark' : 'forecast-weekday'}>{day[dayNum]} • NEW YORK</p>
             <div className='temperature-row'>
-                <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°</p>
+                {showTemperature}
+                {/* <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°</p> */}
                 <div className='degree-type'>
-                    <p style={{fontWeight: 'bold'}} className='dType'>F</p>
-                    <p className='dType'>C</p>
+                    <p style={degreeType === 'F' ? {fontWeight: 'bold'} : null} onClick={() => changeDegree('F')} className='dType'>F</p>
+                    <p style={degreeType === 'C' ? {fontWeight: 'bold'} : null} className='dType' onClick={() => changeDegree('C')}>C</p>
                 </div>
             </div>
             <p className={props.checkedStatus ? 'forecast-condition-dark' : 'forecast-condition'}>{weather.current.condition.text.toUpperCase()}</p>
