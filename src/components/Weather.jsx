@@ -22,13 +22,13 @@ function Weather(props) {
     let d = new Date();
     let dayNum = d.getDay();
 
-    if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
-
     let showTemperature = degreeType === 'F' ? (
         <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°</p>
     ) : (
         <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_c}°</p>
     )
+
+    if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
 
     return (
         <div className={props.checkedStatus ? 'weather-dark' : 'weather'}>
