@@ -6,7 +6,7 @@ function Weather(props) {
     const [degreeType, setDegreeType] = useState('F')
 
     useEffect(() => {
-        axios.get('http://api.weatherapi.com/v1/forecast.json?key=3d83602b387a49c39ba33428222102&q=New York&days=7&aqi=no&alerts=no')
+        axios.get('https://api.weatherapi.com/v1/forecast.json?key=3d83602b387a49c39ba33428222102&q=New York&days=7&aqi=no&alerts=no')
             .then((response) => setWeather(response.data))
     }, []);
 
@@ -15,8 +15,6 @@ function Weather(props) {
             setDegreeType(dType);
         }
     }
-
-    console.log(weather)
 
     let day = { '1': 'MONDAY', '2': 'TUESDAY', '3': 'WEDNESDAY', '4': 'THURSDAY', '5': 'FRIDAY', '6': 'SATURDAY', '0': 'SUNDAY' };
     let d = new Date();
