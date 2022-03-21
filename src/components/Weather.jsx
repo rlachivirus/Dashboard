@@ -16,6 +16,8 @@ function Weather(props) {
         }
     }
 
+    if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
+    
     let day = { '1': 'MONDAY', '2': 'TUESDAY', '3': 'WEDNESDAY', '4': 'THURSDAY', '5': 'FRIDAY', '6': 'SATURDAY', '0': 'SUNDAY' };
     let d = new Date();
     let dayNum = d.getDay();
@@ -25,8 +27,6 @@ function Weather(props) {
     ) : (
         <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_c}°</p>
     )
-
-    if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
 
     return (
         <div className={props.checkedStatus ? 'weather-dark' : 'weather'}>
