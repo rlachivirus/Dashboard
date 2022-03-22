@@ -151,6 +151,7 @@ function TodoForm(props) {
       setModal(true);
     } else {
       setModal(false);
+      setTodo('');
     }
   }
 
@@ -162,7 +163,7 @@ function TodoForm(props) {
       <p className='modal-exit' onClick={() => handleModal(false)}>x</p>
       <form className={props.checkedStatus ? 'input-form-dark' : 'input-form'} onSubmit={handleSubmit}>
         <br />
-        <input type='text' placeholder='Add New Todo' value={todo} onChange={handleChange} />
+        <input autoFocus type='text' placeholder='Add New Todo' value={todo} onChange={handleChange} />
         <input type='submit' value='Add' />
       </form>
     </>
