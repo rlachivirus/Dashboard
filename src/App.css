@@ -152,14 +152,10 @@
 }
 
 .dType {
-  font-size: 25px;
+  font-size: 55px;
+  font-weight: bold;
   margin: 0px;
-  /* font-weight: bold; */
-}
-.dType:first-child {
-  position: relative;
-  margin-top: 3px;
-  left: 3px;
+  cursor: pointer;
 }
 
 .forecast-condition {
@@ -600,4 +596,13 @@ p {
   background-color: black;
   color: white;
   /* border-radius: 15px; */
+}
+
+.dType-dark {
+  font-size: 55px;
+  font-weight: bold;
+  margin: 0px;
+  color: white;
+  cursor: pointer;
+  /* font-weight: bold; */
 }

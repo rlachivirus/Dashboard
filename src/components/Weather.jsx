@@ -10,10 +10,12 @@ function Weather(props) {
             .then((response) => setWeather(response.data))
     }, []);
 
-    const changeDegree = (dType) => {
-        if (dType !== degreeType) {
-            setDegreeType(dType);
-        }
+    const changeDegree = () => {
+        if (degreeType === 'F') {
+            setDegreeType('C');
+        } else {
+            setDegreeType('F');
+        };
     }
 
     if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
@@ -34,10 +36,7 @@ function Weather(props) {
             <div className='temperature-row'>
                 {showTemperature}
                 {/* <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°</p> */}
-                <div className='degree-type'>
-                    <p style={degreeType === 'F' ? {fontWeight: 'bold'} : null} onClick={() => changeDegree('F')} className='dType'>F</p>
-                    <p style={degreeType === 'C' ? {fontWeight: 'bold'} : null} className='dType' onClick={() => changeDegree('C')}>C</p>
-                </div>
+                <p onClick={() => changeDegree()} className={props.checkedStatus ? 'dType-dark' : 'dType'}>{degreeType === 'F' ? 'F' : 'C'}</p>
             </div>
             <p className={props.checkedStatus ? 'forecast-condition-dark' : 'forecast-condition'}>{weather.current.condition.text.toUpperCase()}</p>
             <img className='forecast-image' src={weather.current.condition.icon} />
