@@ -22,9 +22,8 @@
 }
 
 /* .entire-structure {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
+  width: 100%;
 } */
 
 .header {
@@ -75,6 +74,7 @@
   display: flex;
   flex-direction: row;
   column-gap: 10px;
+  /* flex-wrap: wrap; */
 }
 
 .timeAndDate {
@@ -281,8 +281,12 @@
   border-radius: 15px;
   height: 340px;
   width: 250px;
-  overflow: scroll;
+  overflow: auto;
   /* border: 4px solid white; */
+}
+
+.todos::-webkit-scrollbar {
+  display: none;
 }
 
 .column-header {
@@ -314,8 +318,12 @@
   border-radius: 15px;
   height: 340px;
   width: 250px;
-  overflow: scroll;
+  overflow: auto;
   /* border: 4px solid white; */
+}
+
+.done::-webkit-scrollbar {
+  display: none;
 }
 
 .todo-lists {
