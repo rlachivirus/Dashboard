@@ -19,7 +19,7 @@ function Weather(props) {
     }
 
     if ((!weather)) return <div className={props.checkedStatus ? 'loadingSign-dark' : 'loadingSign'}>Loading...</div>;
-    
+    console.log(weather)
     let day = { '1': 'MONDAY', '2': 'TUESDAY', '3': 'WEDNESDAY', '4': 'THURSDAY', '5': 'FRIDAY', '6': 'SATURDAY', '0': 'SUNDAY' };
     let d = new Date();
     let dayNum = d.getDay();
@@ -35,11 +35,20 @@ function Weather(props) {
             <p className={props.checkedStatus ? 'forecast-weekday-dark' : 'forecast-weekday'}>{day[dayNum]} • NEW YORK</p>
             <div className='temperature-row'>
                 {showTemperature}
-                {/* <p className={props.checkedStatus ? 'forecast-temperature-dark' : 'forecast-temperature'}>{weather.current.temp_f}°</p> */}
                 <p onClick={() => changeDegree()} className={props.checkedStatus ? 'dType-dark' : 'dType'}>{degreeType === 'F' ? 'F' : 'C'}</p>
             </div>
             <p className={props.checkedStatus ? 'forecast-condition-dark' : 'forecast-condition'}>{weather.current.condition.text.toUpperCase()}</p>
             <img className='forecast-image' src={weather.current.condition.icon} />
+            <div className='forecast-weather'>
+                <span className={props.checkedStatus ? 'forecast-circles-dark' : 'forecast-circles'}>
+                    <p>{day[dayNum + 1].slice(0, 3)}</p>
+                    <p>{degreeType === 'F' ? weather.forecast.forecastday[1].day.avgtemp_f : weather.forecast.forecastday[1].day.avgtemp_c }</p>
+                </span>
+                <span className={props.checkedStatus ? 'forecast-circles-dark' : 'forecast-circles'}>
+                    <p>{day[dayNum + 2].slice(0, 3)}</p>
+                    <p>{degreeType === 'F' ? weather.forecast.forecastday[2].day.avgtemp_f : weather.forecast.forecastday[2].day.avgtemp_c}</p>
+                </span>
+            </div>
         </div>
     )
 }
