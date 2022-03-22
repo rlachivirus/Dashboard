@@ -99,7 +99,7 @@ function TodoList(props) {
     };
 
     const finishTaskIds = Array.from(finish.taskIds);
-    finishTaskIds.splice(destination, 0, draggableId);
+    finishTaskIds.splice(destination.index, 0, draggableId);
 
     const newFinish = {
       ...finish,
