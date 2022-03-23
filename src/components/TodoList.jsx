@@ -1,7 +1,7 @@
 import { DragDropContext } from 'react-beautiful-dnd';
 import Column from './Column';
 
-function TodoList(props) {
+function TodoList({ iniData, setIniData, addTodo, checkedStatus }) {
 
     const onDragEnd = (result) => {
         const { destination, source, draggableId } = result;
@@ -17,8 +17,8 @@ function TodoList(props) {
             return;
         }
 
-        const start = props.iniData.columns[source.droppableId];
-        const finish = props.iniData.columns[destination.droppableId];
+        const start = iniData.columns[source.droppableId];
+        const finish = iniData.columns[destination.droppableId];
 
         if (start === finish) {
             const newTaskIds = Array.from(start.taskIds);
@@ -31,14 +31,14 @@ function TodoList(props) {
             };
 
             const newState = {
-                ...props.iniData,
+                ...iniData,
                 columns: {
-                    ...props.iniData.columns,
+                    ...iniData.columns,
                     [newColumn.id]: newColumn,
                 }
             }
 
-            props.setIniData(newState);
+            setIniData(newState);
             return;
         }
 
@@ -59,24 +59,24 @@ function TodoList(props) {
         };
 
         const newState = {
-            ...props.iniData,
+            ...iniData,
             columns: {
-                ...props.iniData.columns,
+                ...iniData.columns,
                 [newStart.id]: newStart,
                 [newFinish.id]: newFinish,
             },
         };
 
-        props.setIniData(newState);
+        setIniData(newState);
     }
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            {props.iniData.columnOrder.map(columnId => {
-                const column = props.iniData.columns[columnId];
-                const tasks = column.taskIds.map(taskId => props.iniData.tasks[taskId]);
+            {iniData.columnOrder.map(columnId => {
+                const column = iniData.columns[columnId];
+                const tasks = column.taskIds.map(taskId => iniData.tasks[taskId]);
 
-                return <Column key={column.id} column={column} tasks={tasks} iniData={props.iniData} addTodo={props.addTodo} checkedStatus={props.checkedStatus} />
+                return <Column key={column.id} column={column} tasks={tasks} iniData={iniData} addTodo={addTodo} checkedStatus={checkedStatus} />
             })}
         </DragDropContext>
     )
