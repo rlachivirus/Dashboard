@@ -19,19 +19,6 @@ function Column(props) {
                     >
                         {props.tasks.map((task, index) => (
                             <Task key={task.id} task={task} index={index} checkedStatus={props.checkedStatus} column={props.column} />
-                            // <Draggable key={task.id} draggableId={task.id} index={index}>
-                            //   {(provided) => (
-                            //     <p 
-                            //       {...provided.draggableProps}
-                            //       {...provided.dragHandleProps}
-                            //       ref={provided.innerRef}
-                            //       className={props.checkedStatus ? 'todo-memo-dark' : 'todo-memo'}
-                            //     >
-                            //       <span className='todo-memo-priority'>{props.column.title === 'To do' ? `#${index + 1}` : null}</span><br />
-                            //       {task.content}
-                            //     </p>
-                            //   )}
-                            // </Draggable>
                         ))}
                         {provided.placeholder}
                     </ul>
