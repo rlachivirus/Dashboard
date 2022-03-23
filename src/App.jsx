@@ -7,6 +7,7 @@ import Calculator from './components/Calculator';
 import HeaderTitle from './components/HeaderTitle';
 import DateAndTime from './components/DateAndTime';
 import Weather from './components/Weather';
+import Task from './components/Task';
 
 function Column(props) {
 
@@ -25,21 +26,20 @@ function Column(props) {
             {...provided.droppableProps}
           >
             {props.tasks.map((task, index) => (
-              <Draggable key={task.id} draggableId={task.id} index={index}>
-                {(provided) => (
-                  <>
-                    <p 
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      ref={provided.innerRef}
-                      className={props.checkedStatus ? 'todo-memo-dark' : 'todo-memo'}
-                    >
-                      <span className='todo-memo-priority'>{props.column.title === 'To do' ? `#${index + 1}` : null}</span><br />
-                      {task.content}
-                    </p>
-                  </>
-                )}
-              </Draggable>
+              <Task key={task.id} task={task} index={index} checkedStatus={props.checkedStatus} column={props.column} />
+              // <Draggable key={task.id} draggableId={task.id} index={index}>
+              //   {(provided) => (
+              //     <p 
+              //       {...provided.draggableProps}
+              //       {...provided.dragHandleProps}
+              //       ref={provided.innerRef}
+              //       className={props.checkedStatus ? 'todo-memo-dark' : 'todo-memo'}
+              //     >
+              //       <span className='todo-memo-priority'>{props.column.title === 'To do' ? `#${index + 1}` : null}</span><br />
+              //       {task.content}
+              //     </p>
+              //   )}
+              // </Draggable>
             ))}
             {provided.placeholder}
           </ul>
