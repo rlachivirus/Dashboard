@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Calculator(props) {
+function Calculator({ checkedStatus }) {
 
     const [firstNum, setFirstNum] = useState('0');
     const [secondNum, setSecondNum] = useState('');
@@ -110,36 +110,36 @@ function Calculator(props) {
     }
 
     return (
-        <div className={props.checkedStatus ? 'calculator-dark' : 'calculator'}>
-            <span className={props.checkedStatus ? 'calculator-result-dark' : 'calculator-result'}>{result ? result : secondNum.length === 0 ? firstNum : secondNum}</span>
+        <div className={checkedStatus ? 'calculator-dark' : 'calculator'}>
+            <span className={checkedStatus ? 'calculator-result-dark' : 'calculator-result'}>{result ? result : secondNum.length === 0 ? firstNum : secondNum}</span>
             <div className='row'>
-                <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>AC</span>
-                <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>+/-</span>
-                <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>%</span>
-                <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>÷</span>
+                <span className={checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>AC</span>
+                <span className={checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>+/-</span>
+                <span className={checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>%</span>
+                <span className={checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>÷</span>
             </div>
             <div className='row'>
-                <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>7</span>
-                <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>8</span>
-                <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>9</span>
-                <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>×</span>
+                <span className={checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>7</span>
+                <span className={checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>8</span>
+                <span className={checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>9</span>
+                <span className={checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>×</span>
             </div>
             <div className='row'>
-                <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>4</span>
-                <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>5</span>
-                <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>6</span>
-                <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>-</span>
+                <span className={checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>4</span>
+                <span className={checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>5</span>
+                <span className={checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>6</span>
+                <span className={checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>-</span>
             </div>
             <div className='row'>
-                <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>1</span>
-                <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>2</span>
-                <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>3</span>
-                <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>+</span>
+                <span className={checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>1</span>
+                <span className={checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>2</span>
+                <span className={checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>3</span>
+                <span className={checkedStatus ? 'icons-dark' : 'icons'} onClick={handleSign}>+</span>
             </div>
             <div className='row'>
-                <span className={props.checkedStatus ? 'num-zero-dark' : 'num-zero'} onClick={handleNumbers}>0</span>
-                <span className={props.checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>.</span>
-                <span className={props.checkedStatus ? 'icons-dark' : 'icons'} onClick={handleResult}>=</span>
+                <span className={checkedStatus ? 'num-zero-dark' : 'num-zero'} onClick={handleNumbers}>0</span>
+                <span className={checkedStatus ? 'numbers-dark' : 'numbers'} onClick={handleNumbers}>.</span>
+                <span className={checkedStatus ? 'icons-dark' : 'icons'} onClick={handleResult}>=</span>
             </div>
         </div>
     )
