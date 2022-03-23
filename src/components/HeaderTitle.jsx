@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function HeaderTitle(props) {
+function HeaderTitle({ checkedStatus }) {
     const initialWord = 'leave your day to me';
 
     const [word, setWord] = useState(initialWord);
@@ -33,7 +33,7 @@ function HeaderTitle(props) {
 
     return (
         // <p className='helloNewYork'>Hello <span id='helloNewYork'>{word}</span></p>
-        <div className={props.checkedStatus ? 'header-left-dark' : 'header-left'}>
+        <div className={checkedStatus ? 'header-left-dark' : 'header-left'}>
             {/* <p className={props.checkedStatus ? 'header-title-dark' : 'header-title'}>LEAVE <br /> YOUR DAY <br /> <span className={props.checkedStatus ? 'header-title-span-dark' : 'header-title-span'}>TO ME</span></p> */}
             <p id='header-title1'>LEAVE</p>
             <p id='header-title2'>YOUR DAY</p>
