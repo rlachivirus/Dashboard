@@ -1,177 +1,175 @@
 import './App.css';
 import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import Switch from 'react-switch'
 import initialData from './initial-data';
 import Calculator from './components/Calculator';
 import HeaderTitle from './components/HeaderTitle';
 import DateAndTime from './components/DateAndTime';
 import Weather from './components/Weather';
-import Task from './components/Task';
+import TodoList from './components/TodoList';
 
-function Column(props) {
+// function Column(props) {
+//   return (
+//     <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
+//       <div className={props.checkedStatus ? 'column-header-dark' : 'column-header'}>
+//         <div className='empty-placeholder'> </div>
+//         <p className='column-title'>{props.column.title}</p>
+//         <TodoForm title={props.column.title} iniData={props.iniData} addTodo={props.addTodo} checkedStatus={props.checkedStatus}/>
+//       </div>
+//       <Droppable droppableId={props.column.id}>
+//         {provided => (
+//           <ul
+//             className='todo-lists'
+//             ref={provided.innerRef}
+//             {...provided.droppableProps}
+//           >
+//             {props.tasks.map((task, index) => (
+//               <Task key={task.id} task={task} index={index} checkedStatus={props.checkedStatus} column={props.column} />
+//               // <Draggable key={task.id} draggableId={task.id} index={index}>
+//               //   {(provided) => (
+//               //     <p 
+//               //       {...provided.draggableProps}
+//               //       {...provided.dragHandleProps}
+//               //       ref={provided.innerRef}
+//               //       className={props.checkedStatus ? 'todo-memo-dark' : 'todo-memo'}
+//               //     >
+//               //       <span className='todo-memo-priority'>{props.column.title === 'To do' ? `#${index + 1}` : null}</span><br />
+//               //       {task.content}
+//               //     </p>
+//               //   )}
+//               // </Draggable>
+//             ))}
+//             {provided.placeholder}
+//           </ul>
+//         )}
+//       </Droppable>
+//     </div>
+//   )
+// }
 
-  return (
-    <div className={props.checkedStatus ? 'todos-dark' : 'todos'}>
-      <div className={props.checkedStatus ? 'column-header-dark' : 'column-header'}>
-        <div className='empty-placeholder'> </div>
-        <p className='column-title'>{props.column.title}</p>
-        <TodoForm title={props.column.title} iniData={props.iniData} addTodo={props.addTodo} checkedStatus={props.checkedStatus}/>
-      </div>
-      <Droppable droppableId={props.column.id}>
-        {provided => (
-          <ul
-            className='todo-lists'
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-          >
-            {props.tasks.map((task, index) => (
-              <Task key={task.id} task={task} index={index} checkedStatus={props.checkedStatus} column={props.column} />
-              // <Draggable key={task.id} draggableId={task.id} index={index}>
-              //   {(provided) => (
-              //     <p 
-              //       {...provided.draggableProps}
-              //       {...provided.dragHandleProps}
-              //       ref={provided.innerRef}
-              //       className={props.checkedStatus ? 'todo-memo-dark' : 'todo-memo'}
-              //     >
-              //       <span className='todo-memo-priority'>{props.column.title === 'To do' ? `#${index + 1}` : null}</span><br />
-              //       {task.content}
-              //     </p>
-              //   )}
-              // </Draggable>
-            ))}
-            {provided.placeholder}
-          </ul>
-        )}
-      </Droppable>
-    </div>
-  )
-}
+// function TodoList(props) {
 
-function TodoList(props) {
+//   const onDragEnd = (result) => {
+//     const { destination, source, draggableId } = result;
 
-  const onDragEnd = (result) => {
-    const { destination, source, draggableId } = result;
+//     if (!destination) {
+//       return;
+//     }
 
-    if (!destination) {
-      return;
-    }
+//     if (
+//       destination.droppableId === source.droppableId &&
+//       destination.index === source.index
+//     ) {
+//       return;
+//     }
 
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    }
+//     const start = props.iniData.columns[source.droppableId];
+//     const finish = props.iniData.columns[destination.droppableId];
 
-    const start = props.iniData.columns[source.droppableId];
-    const finish = props.iniData.columns[destination.droppableId];
-
-    if (start === finish) {
-      const newTaskIds = Array.from(start.taskIds);
-      newTaskIds.splice(source.index, 1);
-      newTaskIds.splice(destination.index, 0, draggableId);
+//     if (start === finish) {
+//       const newTaskIds = Array.from(start.taskIds);
+//       newTaskIds.splice(source.index, 1);
+//       newTaskIds.splice(destination.index, 0, draggableId);
   
-      const newColumn = {
-        ...start,
-        taskIds: newTaskIds,
-      };
+//       const newColumn = {
+//         ...start,
+//         taskIds: newTaskIds,
+//       };
   
-      const newState = {
-        ...props.iniData,
-        columns: {
-          ...props.iniData.columns,
-          [newColumn.id]: newColumn,
-        }
-      }
+//       const newState = {
+//         ...props.iniData,
+//         columns: {
+//           ...props.iniData.columns,
+//           [newColumn.id]: newColumn,
+//         }
+//       }
   
-      props.setIniData(newState);
-      return;
-    }
+//       props.setIniData(newState);
+//       return;
+//     }
 
-    const startTaskIds = Array.from(start.taskIds);
-    startTaskIds.splice(source.index, 1);
+//     const startTaskIds = Array.from(start.taskIds);
+//     startTaskIds.splice(source.index, 1);
     
-    const newStart = {
-      ...start,
-      taskIds: startTaskIds,
-    };
+//     const newStart = {
+//       ...start,
+//       taskIds: startTaskIds,
+//     };
 
-    const finishTaskIds = Array.from(finish.taskIds);
-    finishTaskIds.splice(destination.index, 0, draggableId);
+//     const finishTaskIds = Array.from(finish.taskIds);
+//     finishTaskIds.splice(destination.index, 0, draggableId);
 
-    const newFinish = {
-      ...finish,
-      taskIds: finishTaskIds,
-    };
+//     const newFinish = {
+//       ...finish,
+//       taskIds: finishTaskIds,
+//     };
 
-    const newState = {
-      ...props.iniData,
-      columns: {
-        ...props.iniData.columns,
-        [newStart.id]: newStart,
-        [newFinish.id]: newFinish,
-      },
-    };
+//     const newState = {
+//       ...props.iniData,
+//       columns: {
+//         ...props.iniData.columns,
+//         [newStart.id]: newStart,
+//         [newFinish.id]: newFinish,
+//       },
+//     };
 
-    props.setIniData(newState);
-  }
+//     props.setIniData(newState);
+//   }
 
-  return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      {props.iniData.columnOrder.map(columnId => {
-        const column = props.iniData.columns[columnId];
-        const tasks = column.taskIds.map(taskId => props.iniData.tasks[taskId]);
+//   return (
+//     <DragDropContext onDragEnd={onDragEnd}>
+//       {props.iniData.columnOrder.map(columnId => {
+//         const column = props.iniData.columns[columnId];
+//         const tasks = column.taskIds.map(taskId => props.iniData.tasks[taskId]);
 
-        return <Column key={column.id} column={column} tasks={tasks} iniData={props.iniData} addTodo={props.addTodo} checkedStatus={props.checkedStatus}/>
-      })}
-    </DragDropContext>
-  )
-}
+//         return <Column key={column.id} column={column} tasks={tasks} iniData={props.iniData} addTodo={props.addTodo} checkedStatus={props.checkedStatus}/>
+//       })}
+//     </DragDropContext>
+//   )
+// }
 
-function TodoForm(props) {
-  const [ todo, setTodo ] = useState('');
-  const [ modal, setModal ] = useState(false);
+// function TodoForm(props) {
+//   const [ todo, setTodo ] = useState('');
+//   const [ modal, setModal ] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!todo) return;
-    props.addTodo(todo);
-    setTodo('');
-    setModal(false);
-  }
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     if (!todo) return;
+//     props.addTodo(todo);
+//     setTodo('');
+//     setModal(false);
+//   }
 
-  const handleChange = (e) => {
-    setTodo(e.target.value);
-  }
+//   const handleChange = (e) => {
+//     setTodo(e.target.value);
+//   }
 
-  const handleModal = (mod) => {
-    if (mod) {
-      setModal(true);
-    } else {
-      setModal(false);
-      setTodo('');
-    }
-  }
+//   const handleModal = (mod) => {
+//     if (mod) {
+//       setModal(true);
+//     } else {
+//       setModal(false);
+//       setTodo('');
+//     }
+//   }
 
-  let showModal = modal === false ? (
-    <div className='column-form' onClick={() => handleModal(true)}>{props.title === 'To do' ? '+' : null}</div>
-  ) : (
-    // <div className='modal-background' onClick={() => handleModal(false)}>
-    <>
-      <p className='modal-exit' onClick={() => handleModal(false)}>x</p>
-      <form className={props.checkedStatus ? 'input-form-dark' : 'input-form'} onSubmit={handleSubmit}>
-        <br />
-        <input autoFocus type='text' placeholder='Add New Todo' value={todo} onChange={handleChange} />
-        <input type='submit' value='Add' />
-      </form>
-    </>
-    // </div>
-  )
+//   let showModal = modal === false ? (
+//     <div className='column-form' onClick={() => handleModal(true)}>{props.title === 'To do' ? '+' : null}</div>
+//   ) : (
+//     // <div className='modal-background' onClick={() => handleModal(false)}>
+//     <>
+//       <p className='modal-exit' onClick={() => handleModal(false)}>x</p>
+//       <form className={props.checkedStatus ? 'input-form-dark' : 'input-form'} onSubmit={handleSubmit}>
+//         <br />
+//         <input autoFocus type='text' placeholder='Add New Todo' value={todo} onChange={handleChange} />
+//         <input type='submit' value='Add' />
+//       </form>
+//     </>
+//     // </div>
+//   )
 
-  return showModal
-}
+//   return showModal
+// }
 
 // function HeaderTitle(props) {
 //   const initialWord = 'leave your day to me';
