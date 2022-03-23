@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-function TodoForm(props) {
+function TodoForm({ addTodo, title, checkedStatus }) {
     const [todo, setTodo] = useState('');
     const [modal, setModal] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!todo) return;
-        props.addTodo(todo);
+        addTodo(todo);
         setTodo('');
         setModal(false);
     }
@@ -26,12 +26,12 @@ function TodoForm(props) {
     }
 
     let showModal = modal === false ? (
-        <div className='column-form' onClick={() => handleModal(true)}>{props.title === 'To do' ? '+' : null}</div>
+        <div className='column-form' onClick={() => handleModal(true)}>{title === 'To do' ? '+' : null}</div>
     ) : (
         // <div className='modal-background' onClick={() => handleModal(false)}>
         <>
             <p className='modal-exit' onClick={() => handleModal(false)}>x</p>
-            <form className={props.checkedStatus ? 'input-form-dark' : 'input-form'} onSubmit={handleSubmit}>
+            <form className={checkedStatus ? 'input-form-dark' : 'input-form'} onSubmit={handleSubmit}>
                 <br />
                 <input autoFocus type='text' placeholder='Add New Todo' value={todo} onChange={handleChange} />
                 <input type='submit' value='Add' />
