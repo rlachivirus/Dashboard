@@ -19,7 +19,7 @@ function Calculator({ checkedStatus }) {
             } else {
                 if (e.target.innerText === '.' && firstNum.includes('.')) {
                 } else {
-                    if (firstNum.length < 8) {
+                    if (firstNum.length < 6) {
                         setFirstNum(prevState => prevState + e.target.innerText);
                     }
                 }
@@ -98,7 +98,7 @@ function Calculator({ checkedStatus }) {
 
         let numInStr = String(num)
 
-        if (numInStr.length > 8) {
+        if (numInStr.length > 6) {
             setResult('Broken..')
         } else {
             setResult(numInStr);

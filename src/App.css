@@ -338,7 +338,7 @@
   height: 70px;
   width: 180px;
   left: -24px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   overflow: auto;
   word-break: break-word;
   padding: 15px;
@@ -371,7 +371,7 @@
   font-size: 23px;
 } */
 
-.done-memo {
+/* .done-memo {
   position: relative;
   border-radius: 15px;
   height: 100px;
@@ -385,12 +385,12 @@
   font-size: 23px;
   color: rgb(68, 68, 68);
   text-align: center;
-}
+} */
 
-.done-lists {
+/* .done-lists {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .helloNewYork {
   font-size: 30px;
@@ -598,7 +598,7 @@ p {
   height: 70px;
   width: 180px;
   left: -24px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   overflow: auto;
   word-break: break-word;
   padding: 15px;
